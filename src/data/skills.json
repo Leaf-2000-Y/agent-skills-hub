@@ -1,0 +1,1023 @@
+[
+  {
+    "id": "a11y-debugging",
+    "name": "a11y-debugging",
+    "description": "Uses Chrome DevTools MCP for accessibility (a11y) debugging and auditing based on web.dev guidelines. Use when testing semantic HTML, ARIA labels, focus states, keyboard navigation, tap targets, and color contrast.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Web"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "无障碍网页调试",
+    "description_cn": "使用 Chrome DevTools MCP 分析网页语义化 HTML、ARIA 属性、对比度与键盘导航流，确保页面符合 Web 无障碍规范。"
+  },
+  {
+    "id": "accidental-data-loss-prevention",
+    "name": "accidental-data-loss-prevention",
+    "description": "**STOP AND VERIFY**: Before running any command or tool that results in irreversible data loss, you MUST obtain explicit user consent. When in doubt, ask. It is better to wait for confirmation than to accidentally delete production data or critical project assets. Use this for: - SQL: DROP TABLE/VIEW/SCHEMA/DATABASE, TRUNCATE, or broad DELETE (missing WHERE or using 1=1). - Cloud Storage: gsutil rm or gcloud storage rm targeting production data or critical buckets. - Infrastructure: gcloud projects delete, deleting Spanner/BigQuery/Dataproc resources, deleting secrets, or KMS key destruction.",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP",
+      "Database",
+      "Workflow"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "意外数据丢失预防",
+    "description_cn": "针对 DROP TABLE, DELETE, bucket 清空等高危写操作强制执行防损确认与二次授权，避免误删生产环境数据。"
+  },
+  {
+    "id": "alphafold_database_fetch_and_analyze",
+    "name": "alphafold-database-fetch-and-analyze",
+    "description": "Retrieve and analyze AlphaFold predicted structures for a protein. Use when the user provides a specific UniProt Accession ID and wants structural confidence metrics (pLDDT), domain boundary analysis, or disorder assessment. Do not use if the user only has a protein name, gene name, or amino acid sequence — ask for a UniProt ID first.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "AlphaFold 蛋白质结构分析",
+    "description_cn": "从 UniProt 检索 AlphaFold 预测的三维蛋白质结构，并分析其结构域边界、pLDDT 置信度及无序状态。"
+  },
+  {
+    "id": "alphagenome_single_variant_analysis",
+    "name": "alphagenome-single-variant-analysis",
+    "description": "Analyzes genetic variant effects on gene expression (RNA-seq), chromatin accessibility (DNASE), histone marks (ChIP), and transcription factors using the AlphaGenome API. Use when the user asks about non-coding variant effects, pathogenicity, clinical significance, disease associations, functional effects, gene expression changes, splicing disruption, or regulatory effects in promoters and enhancers. Also use for resolving biological terms to tissue/cell-type ontologies (UBERON/CL) or analyzing variants in chr:pos:ref>alt format.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "AlphaGenome 单变异效应分析",
+    "description_cn": "使用 AlphaGenome API 分析非编码区基因变异对基因表达（RNA-seq）、染色质开放性（DNASE）及转录因子的结合调控效应。"
+  },
+  {
+    "id": "bigquery-data-transfer-service",
+    "name": "bigquery-data-transfer-service",
+    "description": "Discovers and inspects BigQuery Data Transfer Service (DTS) configurations.",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "BigQuery 数据传输服务",
+    "description_cn": "检索并检查 BigQuery Data Transfer Service (DTS) 传输配置管道元数据，用于跟踪和优化外部数据自动汇入。"
+  },
+  {
+    "id": "building-data-apps",
+    "name": "building-data-apps",
+    "description": "Build modern data apps, dashboards, and interactive reports using either React + Vite or Streamlit. Includes optional Gemini Data Analytics chat integration for an AI powered \"chat with your data\" experience. Relevant when any of the following conditions are true: 1. User explicitly requests to build a data dashboard, data application, or visualization UI, and the UI pulls data from a GCP database (defaulting to BigQuery unless otherwise specified). 2. You need to generate a frontend web application to interact with, query, and visualize data from GCP data sources. 3. User wants to build a \"chat with your data\" experience or integrate the Gemini Data Analytics chat API into a web interface. Do NOT use when any of the following conditions are true: 1. The request is for building backend-only services. 2. The request is for simple CLI scripts or command-line applications. 3. The web application is not data-centric or does not involve visualizing/querying data from GCP sources.",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "数据应用快速构建器",
+    "description_cn": "指导使用 React + Vite 或 Streamlit 快速搭建现代化数据看板与报表，并无缝集成 Gemini 智能数据分析对话组件。"
+  },
+  {
+    "id": "chembl_database",
+    "name": "chembl-database",
+    "description": "Query the ChEMBL database for bioactive molecules, drug targets, bioactivity data, approved drugs, and chemical structures. Use when the user asks about compounds, targets, IC50/Ki values, drug mechanisms, or structure searches.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "ChEMBL 生物活性数据库",
+    "description_cn": "查询 ChEMBL 数据库以检索活性小分子、药物靶点、生物活性试验数据（如 IC50、Ki）以及批准的药物结构。"
+  },
+  {
+    "id": "chrome-devtools",
+    "name": "chrome-devtools",
+    "description": "Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web pages, automating browser interactions, analyzing performance, or inspecting network requests. This skill does not apply to `--slim` mode (MCP configuration).",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Web"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Chrome 开发者工具控制",
+    "description_cn": "利用 Chrome DevTools 协议进行网页自动化测试、DOM 元素审查、性能瓶颈剖析及网络请求追踪。"
+  },
+  {
+    "id": "chrome-extensions",
+    "name": "chrome-extensions",
+    "description": "Build and publish Chrome Extensions using Manifest V3 best practices. Use this skill whenever the user asks to create, modify, debug, or understand Chrome browser extensions, add-ons, or anything involving the Chrome Extensions API. Trigger on mentions of: 'Chrome extension', 'browser extension', 'manifest.json', 'content script', 'service worker' (in browser context), 'popup' (in browser extension context), 'side panel', 'chrome.* API', 'declarativeNetRequest', 'omnibox', 'context menu' (in extension context), or any request to build functionality that integrates with the Chrome browser UI. Also trigger for publishing to the Chrome Web Store: 'publish extension', preparing an extension for publishing, responding to a review rejection, writing permission justifications, or drafting a privacy policy.",
+    "category": "Frontend & Browser",
+    "tags": [
+      "Web",
+      "Content"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Chrome 浏览器插件开发",
+    "description_cn": "遵循 Manifest V3 标准编写 Service Worker、Content Script，配置 popup/sidepanel，并协助将插件上架 Chrome 应用商店。"
+  },
+  {
+    "id": "clinical_trials_database",
+    "name": "clinical-trials-database",
+    "description": "Query ClinicalTrials.gov via APIv2. Use when you want to search for trials by condition, drug, location, status, or phase; retrieve trial details by NCT ID; check eligibility/inclusion criteria; count trials across conditions or time periods; identify a sponsor's trial portfolio; find recruiting trials for patient matching.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "临床试验数据库检索",
+    "description_cn": "基于 ClinicalTrials.gov API 查询全球范围内的试验设计、病症分类、入组标准、临床分期及试验赞助商详情。"
+  },
+  {
+    "id": "clinvar_database",
+    "name": "clinvar-database",
+    "description": "Use when needing clinical significance, pathogenicity classifications (e.g., Pathogenic, Benign, VUS), clinical evidence rationales, or finding \"hard positive\" benchmark controls for human genomic variants.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "ClinVar 临床变异数据库",
+    "description_cn": "检索人类基因变异的临床意义、致病性分类证据与学术共识，为临床分子诊断提供事实依据。"
+  },
+  {
+    "id": "complex-project-orchestrator",
+    "name": "complex-project-orchestrator",
+    "description": "Manages and executes complex, multi-phase projects that span many steps, files, tools, and sessions. Specializes in breaking down ambiguous large goals into executable plans, tracking progress, handling failures gracefully, and maintaining quality across long workflows. Trigger when: - User has a large, multi-step goal that requires sustained effort - User says \"帮我完成整个...\" / \"完整地做...\" / \"系统性地...\" - A task requires more than 5 distinct operations - User wants to build a complex system or pipeline - Risk of losing track of state across multiple operations",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Python",
+      "Workflow"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "多阶段复杂项目编排器",
+    "description_cn": "将模糊宏大的长周期目标解构为有序 TODO、跟踪多步任务进度，在执行失败或遇到阻碍时自动修正路径。"
+  },
+  {
+    "id": "data-autocleaning",
+    "name": "data-autocleaning",
+    "description": "Automated data quality and transformation capabilities for Dataform/dbt/BigQuery",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "自动化数据清洗与治理",
+    "description_cn": "为 BigQuery/dbt/Dataform 提供自动化的数据质量监控，实现脏数据清洗、自动填充空值及异常值检测。"
+  },
+  {
+    "id": "data-mining-and-extraction",
+    "name": "data-mining-and-extraction",
+    "description": "Extracts high-SNR keywords, core concepts, and latent user issues from raw text, scraped datasets, or user queries.",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Utility"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "数据挖掘与关键信息提取",
+    "description_cn": "从网页抓取数据、海量文档及对话历史中挖掘高信噪比的实体词、核心痛点、用户意图以及核心概念。"
+  },
+  {
+    "id": "dataform-bigquery",
+    "name": "dataform-bigquery",
+    "description": "Expertise in generating clean, correct, and efficient Dataform pipeline",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP",
+      "Python"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Dataform BigQuery 管道开发",
+    "description_cn": "在 BigQuery 中生成高效、整洁的 SQLX 和 Javascript 级数据仓库转换管道，支持复杂依赖关系管理。"
+  },
+  {
+    "id": "dbsnp_database",
+    "name": "dbsnp-database",
+    "description": "Use when you want to look up, map, and search for short genetic variants (SNPs, indels) in NCBI's dbSNP database. Resolves between rsIDs, genomic coordinates in VCF format, and HGVS strings. For an rsID, returns variant type, gene associations, clinical significance, allele frequencies, and genomic coordinates (GRCh38).",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "dbSNP 基因单核苷酸变异检索",
+    "description_cn": "查询 NCBI dbSNP 数据库以检索 SNP/Indel，支持 rsID、染色体坐标与 HGVS 格式的高维检索。"
+  },
+  {
+    "id": "dbt-bigquery",
+    "name": "dbt-bigquery",
+    "description": "Expert guidance for creating, modifying, and optimizing dbt pipelines",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP",
+      "Python"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "dbt BigQuery 管道优化",
+    "description_cn": "编写模块化 SQL dbt 模型，配置数据质量测试与文档生成，并在 BigQuery 侧实现全量与增量运行优化。"
+  },
+  {
+    "id": "debug-optimize-lcp",
+    "name": "debug-optimize-lcp",
+    "description": "Guides debugging and optimizing Largest Contentful Paint (LCP) using Chrome DevTools MCP tools. Use this skill whenever the user asks about LCP performance, slow page loads, Core Web Vitals optimization, or wants to understand why their page's main content takes too long to appear. Also use when the user mentions \"largest contentful paint\", \"page load speed\", \"CWV\", or wants to improve how fast their hero image or main content renders.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Web"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "LCP 网页核心指标优化",
+    "description_cn": "使用 Chrome DevTools MCP 定位并优化最大内容渲染时间（LCP），诊断阻塞脚本、英雄图加载延迟等性能死角。"
+  },
+  {
+    "id": "deep-writing-assistant",
+    "name": "deep-writing-assistant",
+    "description": "Produces exceptional long-form writing: in-depth articles, research reports, book chapters, analytical essays, and structured knowledge documents. Specializes in: - Research-backed content with real citations (academic papers, books, studies) - Chinese-language content optimized for Chinese readers - Narrative non-fiction and literary non-fiction style - Scientific concept explanation for general audiences - Knowledge synthesis from multiple sources into unified frameworks Trigger when: - User asks to write a long article, essay, or chapter (>1000 words) - User wants to synthesize knowledge from multiple sources - User wants research-backed, citation-supported content - User asks for \"深度专栏\", \"深度分析\", \"长文\", \"综述\", \"研究报告\" - User wants writing that goes beyond surface-level explanation",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Content"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "深度长文写作助手",
+    "description_cn": "专注撰写结构严密、学术引用充分的深度报告、科普文章、专业论文综述及高负熵知识体系卡片。"
+  },
+  {
+    "id": "developing-with-bigquery",
+    "name": "developing-with-bigquery",
+    "description": "A repository of BigQuery-specific logic, knowledge, and specialized standards. Use this skill whenever you are doing anything with BigQuery, including: 1. BigQuery query optimization 2. BigFrames Python code 3. BigQuery ML/AI functions.",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP",
+      "Python"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "BigQuery 深入开发指南",
+    "description_cn": "包含 BigQuery 复杂 SQL 调优、BigFrames (Python) 原生分析以及 BigQuery 侧 ML/AI 智能函数的开发标准。"
+  },
+  {
+    "id": "discovering-gcp-data-assets",
+    "name": "discovering-gcp-data-assets",
+    "description": "Finds and inspects data assets within Google Cloud. Relevant when any of the following conditions are true: 1. The user request involves finding, exploring, or inspecting data assets in Google Cloud, such as: - BigQuery datasets, tables, or views - BigLake catalog or tables - Spanner instances, databases or tables - etc. 2. You need to retrieve the schema, metadata, or governance policies for a GCP data asset. 3. You have a keyword or topic (e.g., \"sales data\") but lack the specific table or resource ID. 4. You are attempting to find data using `bq ls`, as this skill offers a superior approach. Don't use when: - Assets are outside Google Cloud",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "GCP",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "GCP 云上数据资产发现",
+    "description_cn": "检索 Google Cloud 环境内的 Spanner、BigQuery、BigLake 模式、元数据及数据湖资产治理策略。"
+  },
+  {
+    "id": "document_pdf_compiler",
+    "name": "document-pdf-compiler",
+    "description": "Compiles Typst files into polished PDFs, exports page PNGs for visual inspection, runs custom mathematical verification scripts, and auto-corrects compilation and validation errors.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Content"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Typst PDF 文档排版器",
+    "description_cn": "将 Typst 文档编译为高颜值的 PDF 文献或试卷，自动化提取错误日志并协助修正编译故障。"
+  },
+  {
+    "id": "embl_ebi_ols",
+    "name": "embl-ebi-ols",
+    "description": "Query and search the EMBL-EBI Ontology Lookup Service (OLS) for biomedical ontology terms, definitions, and hierarchies across 250+ ontologies (e.g., GO, DOID, HP). Use when the user asks to search for terms, retrieve details, navigate hierarchies (parents, children, ancestors), look up properties and individuals, get autocomplete suggestions, or access ontology metadata and statistics.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "OLS 生物本体层级查找",
+    "description_cn": "跨越 250+ 生物医学本体（如 GO, HP, DOID）查询特定术语、概念描述以及复杂的子父层级网格。"
+  },
+  {
+    "id": "encode_ccres_database",
+    "name": "encode-ccres-database",
+    "description": "Query the ENCODE Registry of cis-Regulatory Elements (cCREs) via the SCREEN GraphQL API, or make custom queries to the ENCODE Portal REST API for experiments and files (ChIP-seq peaks, etc.). Use when you want to query regulatory annotations or raw experimental data across human cell types.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "ENCODE 顺式调控元件检索",
+    "description_cn": "查询 ENCODE 项目的调控元件（cCREs）及其表观遗传标志（ChIP-seq peaks, DNASE），分析特定细胞类型的调控活性。"
+  },
+  {
+    "id": "ensembl_database",
+    "name": "ensembl-database",
+    "description": "Query the Ensembl database to resolve gene, transcript, and protein IDs, fetch genomic or protein sequences, retrieve gene structures (exons), and get variant consequence and effect predictions (VEP). Use this skill as a primary ID translator, genomic sequence database and variant effect prediction tool.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Ensembl 基因组特征检索",
+    "description_cn": "检索基因、转录本、蛋白质序列及位置信息，利用 VEP 预测突变对编码蛋白质功能造成的负面影响。"
+  },
+  {
+    "id": "foldseek_structural_search",
+    "name": "foldseek-structural-search",
+    "description": "Performs 3D structural searches of proteins against various databases (PDB, AlphaFold, CATH, MGnify, etc.) using the Foldseek API. Use ONLY when the user provides a physical 3D coordinate file (.cif, .mmcif, or .pdb) and wants to find structurally similar proteins. Do NOT use if the user only provides a protein sequence, gene name, or UniProt ID.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Foldseek 3D 蛋白质三维对比",
+    "description_cn": "输入 3D 蛋白质结构文件（pdb/cif），通过 Foldseek API 在全球大数据库中进行三维相似构象高速匹配。"
+  },
+  {
+    "id": "gcloud-auth-verification",
+    "name": "gcloud-auth-verification",
+    "description": "Guidelines for identifying and resolving missing Google Cloud authentication",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "GCP 身份凭证与授权校验",
+    "description_cn": "诊断并解决 GCP 交互中的 credentials 缺失、Application Default Credentials (ADC) 损坏及服务账户权限越界。"
+  },
+  {
+    "id": "gcp-composer-troubleshooting",
+    "name": "gcp-composer-troubleshooting",
+    "description": "Provides expert guidance for troubleshooting Cloud Composer (Apache",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Composer 管道故障诊断",
+    "description_cn": "分析 Airflow composer 环境的运行日志，解决 DAG 任务挂起、资源不足、Task 死锁及网络路由故障。"
+  },
+  {
+    "id": "gcp-data-pipelines",
+    "name": "gcp-data-pipelines",
+    "description": "Primary entry point for building, managing, and orchestrating data pipelines",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP",
+      "Python"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "GCP 数据管道入口指南",
+    "description_cn": "协助设计 Google Cloud 上的整体数据处理架构，合理分流至 Dataflow、dbt、Spark 等最佳实践方案。"
+  },
+  {
+    "id": "gcp-dataflow",
+    "name": "gcp-dataflow",
+    "description": "Guides writing, packaging, executing, and troubleshooting Apache Beam pipelines on Dataflow. Use when creating new pipelines, configuring Flex Templates, or analyzing performance of Dataflow jobs. Capabilities include Java/Python/Go setup, Cloud Build integration, and deep diagnostic analysis of job health and autoscaling. Use when: - Creating an Apache Beam Dataflow pipeline. - Creating a Google Flex Template. - Debugging Dataflow pipeline - Troubleshooting Dataflow pipeline - Analyzing Performance of Dataflow pipeline. Key capabilities include: Project setup for Java/Python/Go, Flex Template configuration (with Cloud Build support), and in-depth diagnostics for streaming job health, bottlenecks, and autoscaling. Do NOT use for: - General GCP resource management unrelated to Dataflow. - Issues with other GCP services (e.g., GCE, GCS, BigQuery) unless directly impacting Dataflow pipeline execution. - Pipeline technologies other than Apache Beam on Dataflow.",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP",
+      "Python",
+      "Content"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "GCP Dataflow 管道开发",
+    "description_cn": "基于 Apache Beam 开发分布式流处理与批处理流水线，在 Dataflow 上配置弹性自动扩缩容并优化耗时。"
+  },
+  {
+    "id": "gcp-pipeline-orchestration",
+    "name": "gcp-pipeline-orchestration",
+    "description": "This skill helps the agent generate or update orchestration pipeline",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP",
+      "Python"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "GCP Composer 数据编排",
+    "description_cn": "生成并维护 Cloud Composer (Airflow) 数据流水线的 DAG 定义，协调 BigQuery、Notebook 及 Spark 任务顺序。"
+  },
+  {
+    "id": "gcp-pipeline-resource-provisioning",
+    "name": "gcp-pipeline-resource-provisioning",
+    "description": "Automates declarative resource creation and provisioning for data pipelines, supporting BigQuery, Dataform, Dataproc, BigQuery Data Transfer Service (DTS), and other resources. It manages environment-specific configurations (dev, staging, prod) through a deployment.yaml file. Use when: - Modifying or creating deployment.yaml for deployment settings. - Resolving environment-specific variables (e.g., Project IDs, Regions) for deployment. - Provisioning supported infrastructure like BigQuery datasets/tables, Dataform resources, or DTS resources via deployment.yaml. Do not use when: - Resources already exist. - Managing resources not supported by `gcloud beta orchestration-pipelines resource-types list`. - Managing general cloud infrastructure (VMs, networks, Kubernetes, IAM policies), which are better suited for Terraform. - Infrastructure spans multiple cloud providers (AWS, Azure, etc.). - Already uses Terraform for the target resources.",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP",
+      "Python",
+      "Workflow"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "GCP 管道资产配置部署",
+    "description_cn": "通过统一的 deployment.yaml 声明式管理与创建云端 Datasets、Tables 及 Data Transfer Service 数据连接。"
+  },
+  {
+    "id": "gcp-spark",
+    "name": "gcp-spark",
+    "description": "Develops and executes Spark code on Dataproc Clusters and Serverless. Reads and writes data using BigLake Iceberg catalogs, BigQuery and Spanner. Debugs execution failures. Use when: - Writing Spark ETL pipelines on GCP. - Training or running inference with ML models with spark on GCP. - Managing Spark clusters, jobs, batches, and interactive sessions. Don't use when: - Writing generic Python scripts that don't use Spark. - Performing simple SQL queries that can be done directly in BigQuery.",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP",
+      "Database",
+      "Python"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "GCP Dataproc Spark 分布式计算",
+    "description_cn": "在 Dataproc Serverless 上提交 Spark 批处理作业，使用 PySpark 处理 PB 级数据，操作 Iceberg 格式表。"
+  },
+  {
+    "id": "gnomad_database",
+    "name": "gnomad-database",
+    "description": "Query the Genome Aggregation Database (gnomAD). Use when determining the rarity or allele frequency of specific genetic variants, retrieving gene constraint metrics (pLI, LOEUF) to assess loss-of-function intolerance, finding variants in a genomic region or gene, or querying structural variants. Don't use for analyzing individual patient genomes, tracking somatic mutations in cancer (use COSMIC), or requesting raw sequencing reads (use ENA).",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "gnomAD 人群基因突变库",
+    "description_cn": "查询 gnomAD 数据库以评估突变的罕见度、人群等位基因频率，获取 LoF 功能丧失耐受性评分。"
+  },
+  {
+    "id": "google-antigravity-sdk",
+    "name": "google-antigravity-sdk",
+    "description": "Design, implement, and debug autonomous AI agents and multi-agent systems using the Google Antigravity (AGY) SDK. ACTIVATE this skill when the user wants to create, configure, or orchestrate Google Antigravity agents.",
+    "category": "Automation & Workflow",
+    "tags": [
+      "GCP"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Google Antigravity SDK 开发",
+    "description_cn": "利用 Google Antigravity (AGY) SDK 开发自主 AI 代理、多智能体协同系统、规划环路与复杂对话树。"
+  },
+  {
+    "id": "gtex_database",
+    "name": "gtex-database",
+    "description": "Use when you want to retrieve quantitative RNA expression data and variant eQTL information from the GTEx (Genotype-Tissue Expression) Project across 54 non-diseased tissue sites.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Database",
+      "Workflow"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "GTEx 定量表达与 eQTL 库",
+    "description_cn": "查询定量 RNA 基因表达图谱以及顺式表达定量性状位点（eQTL）在 54 个无病人体组织中的关联数据。"
+  },
+  {
+    "id": "human_protein_atlas_database",
+    "name": "human-protein-atlas-database",
+    "description": "Use when you want to retrieve semi-quantitative protein expression and spatial localisation data from the Human Protein Atlas (HPA).",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "人类蛋白质表达图谱",
+    "description_cn": "获取蛋白质在人类各种正常组织和癌变器官中的表达量、亚细胞定位及空间免疫组化图谱。"
+  },
+  {
+    "id": "human-style-column-writer",
+    "name": "human-style-column-writer",
+    "description": "Generates high-density, concept-driven articles in the style of an elite human writer, completely free of AI hallmarks and meta-citations.",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Utility"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "深度干货专栏撰稿人",
+    "description_cn": "模仿人类资深深度专栏作家风格撰写高观点密度的干货长文，坚决剥离 AI 腔调和空泛鸡汤。"
+  },
+  {
+    "id": "interpro_database",
+    "name": "interpro-database",
+    "description": "Identify domains, families, and sites in proteins; find all proteins in a family or sharing a domain; explore species distribution for a domain; annotate genomes with protein families and GO terms. InterPro combines 14 databases (e.g., Pfam, CDD) into one searchable resource. InterPro-N significantly expands annotation and sequence coverage with deep learning. Includes domain architecture (IDA) search.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "InterPro 蛋白质结构域家族检索",
+    "description_cn": "综合 14 个数据库的注释，识别蛋白质的结构域、超家族、保守位点，预测其潜在生化活性。"
+  },
+  {
+    "id": "jaspar_database",
+    "name": "jaspar-database",
+    "description": "Query the JASPAR database for Transcription Factor (TF) binding profiles. Use when retrieving Position Frequency Matrices (PFMs) or Position Weight Matrices (PWMs) for specific TFs, resolving gene symbols to JASPAR Matrix IDs, or getting TF metadata. Supports multiple output formats (MEME, TRANSFAC, PFM, JASPAR, YAML).",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "JASPAR 转录因子结合特征检索",
+    "description_cn": "获取 JASPAR 转录因子结合基序（motif）、位置频率矩阵（PFM）及靶向结合序列模型。"
+  },
+  {
+    "id": "knowledge-synthesis",
+    "name": "knowledge-synthesis",
+    "description": "Synthesizes knowledge from multiple sources (web, PDFs, videos, forums, books) into unified, structured knowledge documents. Specializes in: - Multi-source research aggregation - Converting scattered information into coherent frameworks - Cross-domain knowledge connection discovery - Building citation-backed knowledge bases - Quality assessment and source ranking Trigger when: - User wants to research a topic comprehensively - User wants to synthesize information from multiple sources - User asks about a topic and needs more than surface-level knowledge - User wants to build a knowledge base on a specific domain - User says \"系统性地了解\", \"全面研究\", \"知识整合\", \"综合来源",
+    "category": "Frontend & Browser",
+    "tags": [
+      "Content"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "多源知识合成框架",
+    "description_cn": "聚合海量网页、文献书籍、音视频内容，完成交叉领域概念的负熵清洗、降噪与结构化知识卡片输出。"
+  },
+  {
+    "id": "literature_search_arxiv",
+    "name": "literature-search-arxiv",
+    "description": "Search for scientific papers, preprints, and publications on arXiv. Extract metadata, abstracts, and download full-text PDFs or HTML versions of papers. Use when the user asks to find research papers, literature, or specific arXiv IDs.",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Web",
+      "Content"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "arXiv 前沿论文检索",
+    "description_cn": "搜索并获取 arXiv 最新的计算机科学、物理及数学预印本文献，自动抽提学术论文的大纲与核心方法。"
+  },
+  {
+    "id": "literature_search_biorxiv",
+    "name": "literature-search-biorxiv",
+    "description": "Browse, filter, and download life sciences, biology, and medical preprints from bioRxiv and medRxiv. Supports fetching paper metadata by DOI, and browsing by date range with category and keyword filters. Keyword filtering is local, so date ranges MUST be narrow (1-4 weeks) with a category to prevent timeouts.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "bioRxiv 生物医学论文检索",
+    "description_cn": "检索生物医学与健康科学领域的 bioRxiv / medRxiv 未发表论文，支持细分学科的高精靶向检索。"
+  },
+  {
+    "id": "literature_search_europepmc",
+    "name": "literature-search-europepmc",
+    "description": "Search Europe PMC for scientific literature and download open-access full texts and PDFs. Retrieve full-text XML/plain text by PMCID, get citation lists and bibliography.",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Content"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Europe PMC 生物学文献库",
+    "description_cn": "全面检索欧洲 PMC 开放获取的生物医学期刊全文，构建论文学术引用网络与背景追溯。"
+  },
+  {
+    "id": "literature_search_openalex",
+    "name": "literature-search-openalex",
+    "description": "Query the OpenAlex scholarly database for research papers, authors, institutions, topics, sources, publishers, funders, geo-locations, and keywords. Use when searching academic papers, resolving DOIs, downloading open-access PDFs, finding an author's publications, aggregating bibliometric data (citation counts, h-index, impact factor), exploring the research taxonomies, or performing DOI lookups.",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Database",
+      "Content"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "OpenAlex 全球开放学术图谱",
+    "description_cn": "跨越数亿论文检索科学图谱、统计机构研究权重、学者被引数据（h-index）及研究热点分类。"
+  },
+  {
+    "id": "managing-python-dependencies",
+    "name": "managing-python-dependencies",
+    "description": "Ensures proper Python dependency management, avoiding global `pip install` and adhering to project-specific tooling. Use this skill if any of the following are true: 1. Attempting to run `pip install {package_name}`. 2. Python packages or dependencies need to be added or modified. 3. Initiating a new Python project. 4. Creating a new notebook, even if just using BigQuery cells. 5. Generating Python code that includes `import` statements for third-party libraries. 6. Before executing Python scripts via the terminal to ensure the correct virtual environment is active.",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP",
+      "Python",
+      "Workflow"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Python 依赖管理规范",
+    "description_cn": "确保 Python 项目使用最合适的依赖管理工具（如 uv/poetry），杜绝系统全局 pip install 导致的冲突。"
+  },
+  {
+    "id": "master-relational-network-pipeline",
+    "name": "master-relational-network-pipeline",
+    "description": "Workflow/pipeline skill that coordinates and executes the 4 relational knowledge network skills to build a zero-clutter Obsidian Canvas.",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Obsidian",
+      "Python",
+      "Workflow"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Obsidian 关联知识网格编排",
+    "description_cn": "编排和调度本地 Obsidian 技能，将散乱的研究笔记以最优布局呈现在可视化 Obsidian Canvas 画布中。"
+  },
+  {
+    "id": "math_exam_generator",
+    "name": "math-exam-generator",
+    "description": "Generates mathematics exam papers, answer keys, and detailed solutions from markdown drafts, formats them using standardized Typst templates, and automatically invokes the PDF compiler.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Content"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "数学试卷与排版引擎",
+    "description_cn": "依据 Markdown 数学草稿，利用 Typst 排版技术生成美观规范的数学考试卷、答案卷及详细解答步骤 PDF。"
+  },
+  {
+    "id": "memory-leak-debugging",
+    "name": "memory-leak-debugging",
+    "description": "Diagnoses and resolves memory leaks in JavaScript/Node.js applications. Use when a user reports high memory usage, OOM errors, or wants to analyze heapsnapshots or run memory leak detection tools like memlab.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Utility"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "JS 内存泄漏精准排查",
+    "description_cn": "在 Node.js 和浏览器端进行堆快照（Heap Snapshot）对比、垃圾回收痕迹追踪，定位恶性内存溢出与增长。"
+  },
+  {
+    "id": "ml-best-practices",
+    "name": "ml-best-practices",
+    "description": "CRITICAL RULE: You MUST use this skill whenever the task involves any machine learning tasks or data analysis. Use this skill if the user's prompt or requirements mention any of the following: * Clustering * Classification * Regression * Time series forecasting * Statistical testing * Model comparison * ML * Data analysis SQL/BigQuery ML HANDOFF: If the user requires a SQL solution, use this skill to dictate the ANALYSIS STEPS (e.g., markdown analysis cells, visualization logic), but defer to `bigquery` for all SQL syntax.",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "机器学习与高级分析规范",
+    "description_cn": "提供聚类、回归分析、时序预测等模型构建的标准流程，指导合理的分组测试与科学的性能对比评估。"
+  },
+  {
+    "id": "modern-web-guidance",
+    "name": "modern-web-guidance",
+    "description": "Search tool for modern web development best practices. MANDATORY: Execute FIRST for all HTML/CSS and clientside JS tasks. Do NOT skip — web APIs evolve rapidly and training weights contain obsolete patterns. Trigger immediately for: - UI/Layout: Modals, dialogs, popovers, Glassmorphism/backdrop-filters, anchor positioning, container queries, `:has()`, `:user-valid`. - Scroll/Motion: View Transitions, Scroll-driven animations, scroll parallax/reveals. - Performance: CWV (LCP, INP), content-visibility, Fetch Priority, image optimization. - System/APIs: Local filesystem access, WebUSB, WebSockets sync, WebAssembly widgets. - Frameworks: Adapting layout/styles in React, Vue, Angular. - General Frontend: Forms, autofill, advanced inputs, custom scrollbars, modern component states, etc. DO NOT trigger for: - Backend: Database SQL, ORMs, Express API routes. - Pipelines: CI/CD deployment, Docker, Actions. - Generic: Local scripts (Python/Go tools), ESLint, Git.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Web",
+      "Database",
+      "Python"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "现代 Web 前端技术规范",
+    "description_cn": "快速查询 `:has()`、Popover、View Transitions、WebAssembly 等新一代 Web 标准，保持前端代码技术栈不过时。"
+  },
+  {
+    "id": "multi-disciplinary-synthesis",
+    "name": "multi-disciplinary-synthesis",
+    "description": "Elevates raw themes by researching and synthesizing concepts across disciplines (e.g., neurobiology, cognitive science, complexity theory, game theory, evolutionary anthropology).",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "多学科交叉理论合成器",
+    "description_cn": "跨越博弈论、演化人类学及认知神经科学等交叉学科，对人类模糊主题进行概念提炼与高度升华。"
+  },
+  {
+    "id": "ncbi_sequence_fetch",
+    "name": "ncbi-sequence-fetch",
+    "description": "Retrieve protein and nucleotide sequences from NCBI databases using E-utilities. Supports direct accession lookup, CDS translation, gene+organism search, locus lookup, PubMed-linked sequences, patent protein extraction, and organism+length fallback search. Use when you need to fetch biological sequences by accession, gene name, locus tag, PubMed ID, or patent number.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "NCBI 核酸与蛋白质序列提取",
+    "description_cn": "连接 NCBI E-utilities 提取基因或蛋白质原始序列，支持根据 Accession ID 或者是 Locus 标签的精确匹配。"
+  },
+  {
+    "id": "notebook-guidance",
+    "name": "notebook-guidance",
+    "description": "This skill guides the use of Jupyter notebooks for data analysis, exploration, and visualization, particularly with BigQuery. It outlines best practices for notebook execution and validation (supporting both cell-by-cell execution and full notebook generation depending on tool availability), library installation, and structuring notebooks for clarity. It also covers specific rules for data cleaning, plotting, and integrating with BigQuery SQL and machine learning workflows. Relevant when any of the following conditions are true: 1. The user request involves a data analysis, data exploration, data visualization, or data insights task that requires multiple steps, queries, or visualizations to answer. 2. The user explicitly requests a notebook (.ipynb). 3. You are creating, editing, or executing cells in a Jupyter notebook. 4. You need to query BigQuery from within a notebook. DO NOT use the Python BigQuery client library; instead, you MUST use the `%%bqsql` magics explained in this skill.",
+    "category": "Data & Cloud",
+    "tags": [
+      "GCP",
+      "Database",
+      "Python"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Jupyter Notebook 数据探索指南",
+    "description_cn": "涵盖 %%bqsql 魔法命令、BigQuery 快速制图及探索性分析规范，以保证数据清洗和建模的最佳质量。"
+  },
+  {
+    "id": "obsidian-automation",
+    "name": "obsidian-automation",
+    "description": "Automates Obsidian vault operations: creating notes, updating Canvas files, batch-modifying content, querying the vault structure, and building knowledge graph connections. Use when the user asks to create, modify, reorganize or analyze content in their Obsidian vault at /Users/yiyirowan/Library/Mobile Documents/iCloud~md~obsidian/Documents/first/. Trigger when: - User wants to create notes, templates, or Canvas files in Obsidian - User wants to batch update or reorganize Obsidian content - User wants to query or analyze their vault structure - User wants to build knowledge connections or Canvas networks - User mentions \"Obsidian\", \"vault\", \"Canvas\", \"笔记库\", \"知识图谱",
+    "category": "Automation & Workflow",
+    "tags": [
+      "GCP",
+      "Obsidian"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Obsidian 笔记库自动化",
+    "description_cn": "批量管理 Obsidian 库文件，在笔记间建立深度关联链，注入 Canvas 元素并自动化梳理结构。"
+  },
+  {
+    "id": "obsidian-canvas-builder",
+    "name": "obsidian-canvas-builder",
+    "description": "Generates a spatial, structured, interconnected grid/flow on an Obsidian Canvas with all card content embedded directly as text nodes (0 markdown files on disk).",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Obsidian"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Obsidian 画布构建器",
+    "description_cn": "直接在 Obsidian 画布（Canvas）中绘制卡片节点及关联箭头，支持零本地冗余 MD 文件的极简画布展示。"
+  },
+  {
+    "id": "openfda_database",
+    "name": "openfda-database",
+    "description": "Query, search, and download data from the openFDA API for drugs, devices, foods, tobacco, cosmetics, animal and veterinary products, substances, and transparency data. Use for FDA adverse events, recalls, labeling, approvals, shortages, 510(k) clearances, NDC lookups, and any FDA safety or regulatory data query across all 28 API endpoints.",
+    "category": "Frontend & Browser",
+    "tags": [
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "openFDA 监管与安全性检索",
+    "description_cn": "从 FDA 官方 API 检索医药产品不良事件、合规召回、药品标签、许可详情及药用原辅料规范。"
+  },
+  {
+    "id": "opentargets_database",
+    "name": "opentargets-database",
+    "description": "Query Open Targets Platform for target-disease associations, drug target discovery, tractability/safety data, genetics/omics evidence, known drugs, for therapeutic target identification.",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Open Targets 靶点发现平台",
+    "description_cn": "综合基因组学证据、已知药物阶段与疾病相关性，在 Open Targets 上系统化筛选潜在药物靶向位点。"
+  },
+  {
+    "id": "pdb_database",
+    "name": "pdb-database",
+    "description": "Use when you want to search for or download experimentally-determined 3D structures for biomolecules (proteins, nucleic acids, bound ligands). Supports searching by sequence similarity, structure similarity, chemical and other attributes. Also use to get metadata about biomolecular structure experiments.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "PDB 生物大分子 3D 结构数据库",
+    "description_cn": "检索并获取 X 射线衍射、冷冻电镜测定的三维生物分子结构及相应的分子动力学试验元数据。"
+  },
+  {
+    "id": "protein_sequence_msa",
+    "name": "protein-sequence-msa",
+    "description": "Performs multiple sequence alignment of proteins with EBI Clustal Omega. Use when you need to align multiple sequences to assess similarity, domain conservation, or key residue conservation. Supports up to 4000 sequences and a maximum file size of 4 MB. Do not use to search for homologous proteins in a database (use MMseqs2, BLAST), align non-protein sequences (DNA, RNA), perform structural alignment (use Foldseek, PyMOL), or if you only have a single sequence.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "蛋白质多序列比对",
+    "description_cn": "运行 Clustal Omega 算法，对多个蛋白质序列进行精确多序列对齐，评估特定功能结构域的保守性。"
+  },
+  {
+    "id": "protein_sequence_similarity_search",
+    "name": "protein-sequence-similarity-search",
+    "description": "Searches for homologous protein sequences using MMseqs2 (fast, default) or BLAST (comprehensive, fallback). Trigger this whenever the user provides a protein sequence or FASTA file and asks to find homologues, sequence matches, or wants to infer protein function based on sequence similarity, but not when the user wants to infer protein function based on structural similarity.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "蛋白质同源序列比对",
+    "description_cn": "使用高吞吐 MMseqs2 或精确 BLAST 在云端数据库检索相似蛋白质，推测未知基因的生化活性。"
+  },
+  {
+    "id": "pubchem_database",
+    "name": "pubchem-database",
+    "description": "Query PubChem, search by name/CID/SMILES, retrieve properties, similarity/substructure searches, bioactivity, for cheminformatics. Use when a user asks about a specific chemical, drug, or molecule.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "PubChem 化合物关联检索",
+    "description_cn": "查询 PubChem 化合物、小分子的理化性质、毒性数据、分子指纹以及与靶蛋白质的结合活性报告。"
+  },
+  {
+    "id": "pubmed_database",
+    "name": "pubmed-database",
+    "description": "Search PubMed for scientific literature, including published clinical trials. Fetch abstracts and full text. Link published research to biological databases (gene, protein, nucleotide, PubChem) to discover associations between papers and specific compounds or genes. Verify medical spelling, match raw citations, and cache result sets for bulk processing. Interfaces NCBI E-utilities and PMC BioC APIs.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "PubMed 生物医学文献引擎",
+    "description_cn": "连接 NCBI PubMed 进行文献批量检索，构建研究成果与具体基因、突变和药物的精准图谱映射。"
+  },
+  {
+    "id": "pymol",
+    "name": "pymol",
+    "description": "Visualize, analyze, and render protein and molecular structures using PyMOL. Use when the user wants to create images of protein structures, perform structural alignments or superposition, measure distances or contacts, highlight binding sites or active site residues, color by B-factor/pLDDT, or analyze protein-ligand interactions. Do not use for docking, molecular dynamics, or sequence-only analysis.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "PyMOL 结构动力学可视化",
+    "description_cn": "调用 PyMOL 渲染三维蛋白质模型，支持计算界面配体接触、显示 B-factor 及绘制高质量科研配图。"
+  },
+  {
+    "id": "quickgo_database",
+    "name": "quickgo-database",
+    "description": "Query the QuickGO and Evidence & Conclusion Ontology (ECO) REST API. Use this when you need to map genes to biological processes, molecular functions, or cellular components, find genes associated with a specific pathway/GO term, or explore the Gene Ontology hierarchy. Do not use for querying drug targets (use OpenTargets) or mechanistic signaling pathway diagrams (use KEGG).",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "QuickGO 基因功能本体关联",
+    "description_cn": "快速匹配特定基因的 GO 标签（分子功能、细胞定位、生物学过程），以供下游通路富集使用。"
+  },
+  {
+    "id": "reactome_database",
+    "name": "reactome-database",
+    "description": "Query the Reactome database (Analysis and Content Services). Use when the user asks about pathway analysis, gene list enrichment, retrieving results by token, finding unmapped or not-found identifiers, mapping identifiers, reaction participants (inputs, outputs), pathway hierarchy (including top-level pathways), diagram export, cross-reference mapping, or searching the knowledgebase.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Reactome 生化反应通路库",
+    "description_cn": "查询 Reactome 数据库中各种复杂的代谢、传导和调控通路网络，分析特定分子集的富集强度。"
+  },
+  {
+    "id": "science_skills_common",
+    "name": "science-skills-common",
+    "description": "Shared Python package for Science Skills, currently containing http_client -- a unified HTTP client with rate limiting, retries, and exponential backoff. Not a standalone agent skill. Do not invoke directly.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Python"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Science Skills Common",
+    "description_cn": "Shared Python package for Science Skills, currently containing http_client -- a unified HTTP client with rate limiting, retries, and exponential backoff. Not a standalone agent skill. Do not invoke directly."
+  },
+  {
+    "id": "skill-repair",
+    "name": "skill-repair",
+    "description": "Use this to fix and re-install agent skills that have failed installation. This skill provides the necessary context and permissions to surgically update the `manifest.json` after a fix has been applied.",
+    "category": "Frontend & Browser",
+    "tags": [
+      "Utility"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Agent 损坏技能包修复",
+    "description_cn": "自动审查当前运行环境下的损坏技能，协助补齐依赖、修正 `manifest.json` 元数据配置并重新安装。"
+  },
+  {
+    "id": "string_database",
+    "name": "string-database",
+    "description": "Query the STRING database for protein-protein interactions (PPIs), functional enrichment, and homology. Use when the user asks about interactions between specific proteins, interaction evidence, confidence scores, protein interaction partners, or pathway enrichments.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "STRING 蛋白质互作网络库",
+    "description_cn": "查询不同物种蛋白质之间的直接物理结合与间接功能关联网络，分析多基因簇共表达水平。"
+  },
+  {
+    "id": "troubleshooting",
+    "name": "troubleshooting",
+    "description": "Uses Chrome DevTools MCP and documentation to troubleshoot connection and target issues. Trigger this skill when list_pages, new_page, or navigate_page fail, or when the server initialization fails.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Web"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "DevTools 连接调试除错",
+    "description_cn": "解决浏览器自动化环境下的页面挂起、网络拦截报错、DevTools 通信超时等底层的环境连接故障。"
+  },
+  {
+    "id": "ucsc_conservation_and_tfbs",
+    "name": "ucsc-conservation-and-tfbs",
+    "description": "Fetch Evolutionary Conservation scores (phyloP, phastCons) and Transcription Factor Binding Sites (TFBS) from the UCSC Genome Browser. Use when analyzing whether genomic variants or regions are evolutionarily conserved, functionally important, or bounded by TF regulators across major projects (ENCODE, JASPAR, ReMap).",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Web",
+      "Workflow"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Ucsc Conservation And Tfbs",
+    "description_cn": "Fetch Evolutionary Conservation scores (phyloP, phastCons) and Transcription Factor Binding Sites (TFBS) from the UCSC Genome Browser. Use when analyzing whether genomic variants or regions are evolutionarily conserved, functionally important, or bounded by TF regulators across major projects (ENCODE, JASPAR, ReMap)."
+  },
+  {
+    "id": "unibind_database",
+    "name": "unibind-database",
+    "description": "Queries the UniBind database for experimentally validated transcription factor (TF) binding sites. Use when retrieving direct TF-DNA interaction datasets, downloading binding site coordinates (BED/FASTA) for local analysis, or listing available datasets by species, cell line, or TF name. Don't use to query specific intervals, locations, genes, motif models or expression data.",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "UniBind 经典结合位点数据库",
+    "description_cn": "获取经由 ChIP-seq 等高通量实验直接确证的转录因子结合位点三维 DNA 互作物理映射。"
+  },
+  {
+    "id": "uniprot_database",
+    "name": "uniprot-database",
+    "description": "Access protein metadata, function, taxonomy, and sequences across UniProtKB, UniParc, and UniRef. Use when searching for proteins, mapping identifiers, or retrieving functional annotations and publications. Don't use for sequence alignment, protein folding, or sequence similarity search (use specialized skills for those tasks).",
+    "category": "Bioinformatics & Science",
+    "tags": [
+      "Science",
+      "Database"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "UniProt 经典蛋白质数据库",
+    "description_cn": "全球核心蛋白质序列及功能信息检索中心，提供极其完善的分类学、序列变化和功能背景标注。"
+  },
+  {
+    "id": "uv",
+    "name": "uv",
+    "description": "Checks whether the uv Python package manager is installed and installs it if missing. Ensures uv is on PATH. Use when another skill requires uv as a prerequisite.",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Python"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "uv Python 依赖快速安装器",
+    "description_cn": "快速判定系统中是否具备极速 Python 包管理工具 uv，并在缺损时自动将其装配进系统环境变量。"
+  },
+  {
+    "id": "workflow_skill_creator",
+    "name": "workflow-skill-creator",
+    "description": "Distills a completed user workflow or interaction into a reusable agent skill. Use when the user asks to turn their workflow, interaction, or multi-step process into a skill, or when they say \"make this a skill\", \"create a skill from what we just did\", \"package this workflow\" or similar. Do not use for creating skills from scratch without an existing workflow (use a generic skill-creator for that).",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Workflow"
+    ],
+    "version": "v1",
+    "publisher": "Google Antigravity",
+    "name_cn": "Workflow Skill Creator",
+    "description_cn": "Distills a completed user workflow or interaction into a reusable agent skill. Use when the user asks to turn their workflow, interaction, or multi-step process into a skill, or when they say \"make this a skill\", \"create a skill from what we just did\", \"package this workflow\" or similar. Do not use for creating skills from scratch without an existing workflow (use a generic skill-creator for that)."
+  }
+]
