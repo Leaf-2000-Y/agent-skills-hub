@@ -124,6 +124,7 @@ function App() {
   const [copiedId, setCopiedId] = useState(null);
 
   // External page specific filters
+  const [extCategoryFilter, setExtCategoryFilter] = useState('All'); // 'All' | 'AI增强与提示工程' | etc.
   const [extPlatformFilter, setExtPlatformFilter] = useState('All'); // 'All' | 'GitHub' | 'Anthropic' | 'Vercel'
   const [extRatingFilter, setExtRatingFilter] = useState('All'); // 'All' | '5' | '4'
 
@@ -135,6 +136,16 @@ function App() {
     { id: '数据资产与云基础设施', label: '数据资产与云基础设施' },
     { id: '前沿科学与计算', label: '前沿科学与计算' },
     { id: '开发效率与工具', label: '开发效率与工具' }
+  ];
+
+  // 5 high-SNR categories for external skills
+  const extCategories = [
+    { id: 'All', label: '全部分类' },
+    { id: 'AI增强与提示工程', label: 'AI增强与提示工程' },
+    { id: '文本编写与内容创作', label: '文本编写与内容创作' },
+    { id: '知识检索与学术研究', label: '知识检索与学术研究' },
+    { id: '开发协同与系统控制', label: '开发协同与系统控制' },
+    { id: '多媒体与设计效率', label: '多媒体与设计效率' }
   ];
 
   const totalSkills = skillsData.length;
@@ -181,12 +192,13 @@ function App() {
         skill.description_cn.toLowerCase().includes(query) ||
         skill.id.toLowerCase().includes(query);
       
+      const matchesCategory = extCategoryFilter === 'All' || skill.category === extCategoryFilter;
       const matchesPlatform = extPlatformFilter === 'All' || skill.source_platform === extPlatformFilter;
       const matchesRating = extRatingFilter === 'All' || skill.rating.toString() === extRatingFilter;
       
-      return matchesSearch && matchesPlatform && matchesRating;
+      return matchesSearch && matchesCategory && matchesPlatform && matchesRating;
     });
-  }, [searchQuery, extPlatformFilter, extRatingFilter]);
+  }, [searchQuery, extCategoryFilter, extPlatformFilter, extRatingFilter]);
 
   // Compute counts for the source filter based on current search & category context
   const sourceCounts = useMemo(() => {
@@ -232,7 +244,7 @@ function App() {
   return (
     <div className="app-layout">
       {/* Fixed Left Sidebar */}
-      <aside className="sidebar-aside">
+      <aside className="sidebar-aside" style={{ overflowY: 'auto' }}>
         <div className="sidebar-brand-wrapper">
           <div className="logo-icon">Æ</div>
           <span className="logo-text">AetherSkills</span>
@@ -289,13 +301,56 @@ function App() {
         ) : (
           <>
             <div className="sidebar-section">
+              <span className="sidebar-section-title">外部分类过滤</span>
+              <div className="sidebar-nav-list">
+                {extCategories.map(cat => {
+                  const count = externalSkills.filter(s => {
+                    const query = searchQuery.toLowerCase();
+                    const matchesSearch = 
+                      s.name.toLowerCase().includes(query) ||
+                      s.name_cn.toLowerCase().includes(query) ||
+                      s.description.toLowerCase().includes(query) ||
+                      s.description_cn.toLowerCase().includes(query) ||
+                      s.id.toLowerCase().includes(query);
+                    
+                    const matchesCat = cat.id === 'All' || s.category === cat.id;
+                    const matchesPlat = extPlatformFilter === 'All' || s.source_platform === extPlatformFilter;
+                    const matchesRating = extRatingFilter === 'All' || s.rating.toString() === extRatingFilter;
+                    
+                    return matchesSearch && matchesCat && matchesPlat && matchesRating;
+                  }).length;
+
+                  return (
+                    <button
+                      key={cat.id}
+                      className={`sidebar-nav-btn ${extCategoryFilter === cat.id ? 'active' : ''}`}
+                      onClick={() => setExtCategoryFilter(cat.id)}
+                    >
+                      <span>{cat.label}</span>
+                      <span className="sidebar-nav-count">{count}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="sidebar-section">
               <span className="sidebar-section-title">平台来源</span>
               <div className="sidebar-nav-list">
                 {['All', 'GitHub', 'Anthropic', 'Vercel'].map(platform => {
                   const count = externalSkills.filter(s => {
+                    const query = searchQuery.toLowerCase();
+                    const matchesSearch = 
+                      s.name.toLowerCase().includes(query) ||
+                      s.name_cn.toLowerCase().includes(query) ||
+                      s.description.toLowerCase().includes(query) ||
+                      s.description_cn.toLowerCase().includes(query) ||
+                      s.id.toLowerCase().includes(query);
+                    
+                    const matchesCat = extCategoryFilter === 'All' || s.category === extCategoryFilter;
                     const matchesPlat = platform === 'All' || s.source_platform === platform;
                     const matchesRating = extRatingFilter === 'All' || s.rating.toString() === extRatingFilter;
-                    return matchesPlat && matchesRating;
+                    return matchesSearch && matchesCat && matchesPlat && matchesRating;
                   }).length;
                   
                   return (
@@ -321,9 +376,18 @@ function App() {
                   { id: '4', label: '⭐⭐⭐⭐ 四星级' }
                 ].map(ratingItem => {
                   const count = externalSkills.filter(s => {
+                    const query = searchQuery.toLowerCase();
+                    const matchesSearch = 
+                      s.name.toLowerCase().includes(query) ||
+                      s.name_cn.toLowerCase().includes(query) ||
+                      s.description.toLowerCase().includes(query) ||
+                      s.description_cn.toLowerCase().includes(query) ||
+                      s.id.toLowerCase().includes(query);
+                    
+                    const matchesCat = extCategoryFilter === 'All' || s.category === extCategoryFilter;
                     const matchesPlat = extPlatformFilter === 'All' || s.source_platform === extPlatformFilter;
                     const matchesRating = ratingItem.id === 'All' || s.rating.toString() === ratingItem.id;
-                    return matchesPlat && matchesRating;
+                    return matchesSearch && matchesCat && matchesPlat && matchesRating;
                   }).length;
 
                   return (
@@ -461,8 +525,8 @@ function App() {
                         <span className="stat-label">五星级神级</span>
                       </div>
                       <div className="stat-item">
-                        <span className="stat-value">3</span>
-                        <span className="stat-label">平台分布</span>
+                        <span className="stat-value">{new Set(externalSkills.map(s => s.category)).size}</span>
+                        <span className="stat-label">板块分类</span>
                       </div>
                       <div className="stat-item">
                         <span className="stat-value">{lastUpdated}</span>
@@ -552,7 +616,7 @@ function App() {
               )
             ) : (
               // 外部精选 Rowan 五星神级精选区
-              searchQuery === '' && extPlatformFilter === 'All' && extRatingFilter === 'All' && (
+              searchQuery === '' && extCategoryFilter === 'All' && extPlatformFilter === 'All' && extRatingFilter === 'All' && (
                 <section className="rowan-star-section">
                   <div className="section-header" style={{ marginBottom: '1.8rem' }}>
                     <h2 className="section-title" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
