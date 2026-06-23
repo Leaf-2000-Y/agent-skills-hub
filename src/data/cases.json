@@ -1,0 +1,72 @@
+[
+  {
+    "id": "case_dopamine_prisoner",
+    "name_cn": "🎬 《多巴胺温水青蛙》自媒体分镜控制看板",
+    "name_en": "Dopamine Prisoner Storyboard Canvas Dashboard",
+    "description_cn": "一键将深层隐喻故事结构清洗并转化为 2x2 精确定位控制的 Obsidian Canvas，关联 Flux.1 绘图提示词与可灵物理动效参数，搭建可实操的自媒体出片流水线。",
+    "description_en": "Transforms metaphorical story structures into a 2x2 Obsidian Canvas dashboard, integrating Flux.1 prompts and Kling/Runway dynamic parameters for an executable media pipeline.",
+    "skills_combined": [
+      "ai_media_production_pipeline",
+      "obsidian-canvas-builder",
+      "obsidian-automation",
+      "source-to-content-architecture"
+    ],
+    "outcome_preview": "Obsidian 控制面板 + 4大分镜 (流体原画 + Kling 动效指令)"
+  },
+  {
+    "id": "case_seed_breathing_cover",
+    "name_cn": "🎨 《等一粒种子呼吸》生成艺术与超清书封设计器",
+    "name_en": "Seed Breathing Generative Art Cover Designer",
+    "description_cn": "采用 Perlin 噪声流体场模拟种子脉动呼吸，双衬线古典杂志版式排版。利用 Web 视口缩放与印刷级 2x 超高清 PNG 物理重绘导出机制，生成超高分辨率印刷画作。",
+    "description_en": "Utilizes Perlin noise fields to simulate organic pulse breathing under an editorial serif layout, featuring dual-DPI web preview scaling and ultra-high resolution (2160x2880) print-ready exporting.",
+    "skills_combined": [
+      "generative_art_cover_generator",
+      "building-data-apps",
+      "modern-web-guidance",
+      "design-contract-builder"
+    ],
+    "outcome_preview": "超高清封面生成网页 (已部署) + 2160x2880 PNG 无损导出"
+  },
+  {
+    "id": "case_narrative_sovereignty_base",
+    "name_cn": "📚 《语言与叙事主权》沉浸式幻灯长文底座",
+    "name_en": "Narrative Sovereignty Interactive Base",
+    "description_cn": "以“去黑话、高信息熵”的个人 IP 认知库为载体，打造双模（沉浸式幻灯片 / 经典长文）阅读面板，运用高斯模糊和流畅缓动函数实现 premium 级质感微光特效。",
+    "description_en": "Crafts a dual-mode (immersive slides / classic article) reader interface, using glassmorphic panels and responsive easing transitions to present a clean, high-entropy knowledge base.",
+    "skills_combined": [
+      "kinetic-site-builder",
+      "source-to-content-architecture",
+      "modern-web-guidance",
+      "github_pages_automated_deployment"
+    ],
+    "outcome_preview": "沉浸式阅读器网页 + 网页内置高斯模糊 HUD 浮层控制栏"
+  },
+  {
+    "id": "case_writing_orchestration_pipeline",
+    "name_cn": "✍️ 个人 IP 去噪与高信噪比文稿自动写作管线",
+    "name_en": "High-Entropy Automated Writing Orchestration Pipeline",
+    "description_cn": "结合原始素材提取（source-to-content-architecture）、多源事实核对（deep-writing-assistant）与去AI腔人声重塑（human-style-column-writer），以严格的前置写作契约规范文笔和受众对齐，输出极具自媒体传播力的高信噪比专栏文案。",
+    "description_en": "Chains raw denoising, fact check, and human style columns under a strict writing alignment contract schema to produce human-authored grade copy with rich insights.",
+    "skills_combined": [
+      "writing_pipeline_orchestrator",
+      "source-to-content-architecture",
+      "deep-writing-assistant",
+      "human-style-column-writer"
+    ],
+    "outcome_preview": "高信噪比专栏文章稿件 + 自动提炼的 ☆ 收藏金句块"
+  },
+  {
+    "id": "case_hyperframes_rendering_system",
+    "name_cn": "🎬 基于 HyperFrames & GSAP 的代码化自媒体出片引擎",
+    "name_en": "HyperFrames Code-to-Video Outpouring Engine",
+    "description_cn": "摒弃高成本 AI 视频大模型，通过 AI 直接生成 HTML + GSAP 动效网页。在后台使用 Headless Chrome 执行高帧率录制与截图，通过 FFmpeg 合成为无损超清科普/创意视频。",
+    "description_en": "Bypasses generative video APIs by rendering AI-written HTML/GSAP scenes via headless Chrome and compiling frames into lossless high-definition MG animation MP4s.",
+    "skills_combined": [
+      "hyperframes_code_video_renderer",
+      "modern-web-guidance",
+      "chrome-devtools",
+      "blender_parameterized_modeling"
+    ],
+    "outcome_preview": "本地无损视频渲染管线脚本 + 超清动效 MP4 视频输出"
+  }
+]

@@ -577,7 +577,7 @@
     "id": "a11y-debugging",
     "name": "a11y-debugging",
     "description": "Uses Chrome DevTools MCP for accessibility (a11y) debugging and auditing based on web.dev guidelines. Use when testing semantic HTML, ARIA labels, focus states, keyboard navigation, tap targets, and color contrast.",
-    "category": "Bioinformatics & Science",
+    "category": "Frontend & Browser",
     "tags": [
       "Web"
     ],
@@ -587,52 +587,10 @@
     "description_cn": "使用 Chrome DevTools MCP 分析网页语义化 HTML、ARIA 属性、对比度与键盘导航流，确保页面符合 Web 无障碍规范。"
   },
   {
-    "id": "alphafold-database-fetch-and-analyze",
-    "name": "alphafold-database-fetch-and-analyze",
-    "description": "Retrieve and analyze AlphaFold predicted structures for a protein. Use when the user provides a specific UniProt Accession ID and wants structural confidence metrics (pLDDT), domain boundary analysis, or disorder assessment.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Protein"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "AlphaFold 结构检索与分析",
-    "description_cn": "检索并分析蛋白质的 AlphaFold 预测结构，获取置信度指标（pLDDT）、结构域边界及无序区域评估。"
-  },
-  {
-    "id": "alphagenome-single-variant-analysis",
-    "name": "alphagenome-single-variant-analysis",
-    "description": "Analyzes genetic variant effects on gene expression (RNA-seq), chromatin accessibility (DNASE), histone marks (ChIP), and transcription factors using the AlphaGenome API.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Genomics"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "AlphaGenome 单变异位点效应分析",
-    "description_cn": "利用 AlphaGenome API 评估基因变异对基因表达、染色质可及性、组蛋白修饰和转录因子的多维调控效应。"
-  },
-  {
-    "id": "chembl-database",
-    "name": "chembl-database",
-    "description": "Query the ChEMBL database for bioactive molecules, drug targets, bioactivity data, approved drugs, and chemical structures.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Drug"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "ChEMBL 生物活性数据库检索",
-    "description_cn": "查询 ChEMBL 数据库中的活性分子、靶标、IC50/Ki 活性值、药物机制以及分子化学结构。"
-  },
-  {
     "id": "chrome-devtools",
     "name": "chrome-devtools",
     "description": "Uses Chrome DevTools via MCP for efficient debugging, troubleshooting and browser automation. Use when debugging web pages, automating browser interactions, analyzing performance, or inspecting network requests. This skill does not apply to `--slim` mode (MCP configuration).",
-    "category": "Bioinformatics & Science",
+    "category": "Frontend & Browser",
     "tags": [
       "Web"
     ],
@@ -642,38 +600,10 @@
     "description_cn": "利用 Chrome DevTools 协议进行网页自动化测试、DOM 元素审查、性能瓶颈剖析及网络请求追踪。"
   },
   {
-    "id": "clinical-trials-database",
-    "name": "clinical-trials-database",
-    "description": "Query ClinicalTrials.gov via APIv2. Use when you want to search for trials by condition, drug, location, status, or phase; retrieve trial details by NCT ID; check eligibility/inclusion criteria; count trials across conditions or time periods.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Clinical"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "ClinicalTrials 临床研究检索",
-    "description_cn": "对接 ClinicalTrials.gov 检索全球临床试验状态、招募标准、入排规则以及指定 NCT ID 的试验详情。"
-  },
-  {
-    "id": "clinvar-database",
-    "name": "clinvar-database",
-    "description": "Use when needing clinical significance, pathogenicity classifications (e.g., Pathogenic, Benign, VUS), clinical evidence rationales, or finding 'hard positive' benchmark controls for human genomic variants.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Genomics"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "ClinVar 临床变异分类检索",
-    "description_cn": "获取人类基因变异的临床意义、致病性分类（致病、良性、VUS）以及循证支持细节。"
-  },
-  {
     "id": "complex-project-orchestrator",
     "name": "complex-project-orchestrator",
     "description": "Manages and executes complex, multi-phase projects that span many steps, files, tools, and sessions. Specializes in breaking down ambiguous large goals into executable plans, tracking progress, handling failures gracefully, and maintaining quality across long workflows. Trigger when: - User has a large, multi-step goal that requires sustained effort - User says \"帮我完成整个...\" / \"完整地做...\" / \"系统性地...\" - A task requires more than 5 distinct operations - User wants to build a complex system or pipeline - Risk of losing track of state across multiple operations",
-    "category": "Bioinformatics & Science",
+    "category": "Automation & Workflow",
     "tags": [
       "Python",
       "Workflow"
@@ -684,24 +614,10 @@
     "description_cn": "将模糊宏大的长周期目标解构为有序 TODO、跟踪多步任务进度，在执行失败或遇到阻碍时自动修正路径。"
   },
   {
-    "id": "dbsnp-database",
-    "name": "dbsnp-database",
-    "description": "Use when you want to look up, map, and search for short genetic variants (SNPs, indels) in NCBI's dbSNP database. Resolves between rsIDs, genomic coordinates in VCF format, and HGVS strings.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Genomics"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "dbSNP 变异库匹配检索",
-    "description_cn": "在 NCBI dbSNP 库中检索单核苷酸多态性（SNP）与插入缺失（indels），支持 rsID 与染色体物理坐标映射。"
-  },
-  {
     "id": "debug-optimize-lcp",
     "name": "debug-optimize-lcp",
     "description": "Guides debugging and optimizing Largest Contentful Paint (LCP) using Chrome DevTools MCP tools. Use this skill whenever the user asks about LCP performance, slow page loads, Core Web Vitals optimization, or wants to understand why their page's main content takes too long to appear. Also use when the user mentions \"largest contentful paint\", \"page load speed\", \"CWV\", or wants to improve how fast their hero image or main content renders.",
-    "category": "Bioinformatics & Science",
+    "category": "Frontend & Browser",
     "tags": [
       "Web"
     ],
@@ -714,7 +630,7 @@
     "id": "discovering-gcp-data-assets",
     "name": "discovering-gcp-data-assets",
     "description": "Finds and inspects data assets within Google Cloud. Relevant when any of the following conditions are true: 1. The user request involves finding, exploring, or inspecting data assets in Google Cloud, such as: - BigQuery datasets, tables, or views - BigLake catalog or tables - Spanner instances, databases or tables - etc. 2. You need to retrieve the schema, metadata, or governance policies for a GCP data asset. 3. You have a keyword or topic (e.g., \"sales data\") but lack the specific table or resource ID. 4. You are attempting to find data using `bq ls`, as this skill offers a superior approach. Don't use when: - Assets are outside Google Cloud",
-    "category": "Bioinformatics & Science",
+    "category": "Data & Cloud",
     "tags": [
       "GCP",
       "Database"
@@ -725,164 +641,10 @@
     "description_cn": "检索 Google Cloud 环境内的 Spanner、BigQuery、BigLake 模式、元数据及数据湖资产治理策略。"
   },
   {
-    "id": "embl-ebi-ols",
-    "name": "embl-ebi-ols",
-    "description": "Query and search the EMBL-EBI Ontology Lookup Service (OLS) for biomedical ontology terms, definitions, and hierarchies across 250+ ontologies (e.g., GO, DOID, HP).",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Ontology"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "EBI 本体检索服务 OLS",
-    "description_cn": "查询 EMBL-EBI OLS 中 250+ 生物医学本体术语、定义、层级结构（GO, HP, DOID）及语义映射。"
-  },
-  {
-    "id": "encode-ccres-database",
-    "name": "encode-ccres-database",
-    "description": "Query the ENCODE Registry of cis-Regulatory Elements (cCREs) via the SCREEN GraphQL API, or make custom queries to the ENCODE Portal REST API for experiments and files (ChIP-seq peaks, etc.).",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Genomics"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "ENCODE 顺式调控元件库检索",
-    "description_cn": "通过 SCREEN GraphQL API 检索人类顺式调控元件（cCREs），或获取 ENCODE Portal 下的 ChIP-seq 原始实验数据。"
-  },
-  {
-    "id": "ensembl-database",
-    "name": "ensembl-database",
-    "description": "Query the Ensembl database to resolve gene, transcript, and protein IDs, fetch genomic or protein sequences, retrieve gene structures (exons), and get variant consequence and effect predictions (VEP).",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Genomics"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "Ensembl 基因组数据库匹配",
-    "description_cn": "翻译基因/转录本/蛋白 ID，获取外显子结构与序列，调用 VEP 预测变异引起的转录本后果及致病效应。"
-  },
-  {
-    "id": "foldseek-structural-search",
-    "name": "foldseek-structural-search",
-    "description": "Performs 3D structural searches of proteins against various databases (PDB, AlphaFold, CATH, MGnify, etc.) using the Foldseek API.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Protein"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "Foldseek 蛋白质三维结构比对",
-    "description_cn": "使用 PDB/CIF 结构坐标文件，调用 Foldseek API 在 PDB 或 AlphaFold 数据库中开展高速三维空间对齐比对。"
-  },
-  {
-    "id": "gnomad-database",
-    "name": "gnomad-database",
-    "description": "Query the Genome Aggregation Database (gnomAD) for allele frequency of variant, and constraint metrics (pLI, LOEUF) to assess loss-of-function intolerance.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Genomics"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "gnomAD 人群基因突变频率库",
-    "description_cn": "获取 gnomAD 数据库中的变异等位基因频率、群体约束指标（pLI, LOEUF）及常染色体突变分布特征。"
-  },
-  {
-    "id": "gtex-database",
-    "name": "gtex-database",
-    "description": "Retrieve quantitative RNA expression data and variant eQTL information from the GTEx (Genotype-Tissue Expression) Project across 54 non-diseased tissue sites.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Genomics"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "GTEx 组织基因表达与 eQTL 库",
-    "description_cn": "检索人类 54 个健康组织中的定量 RNA 表达丰度与基因型-组织表达（eQTL）关联信号数据。"
-  },
-  {
-    "id": "human-protein-atlas-database",
-    "name": "human-protein-atlas-database",
-    "description": "Retrieve semi-quantitative protein expression and spatial localisation data from the Human Protein Atlas (HPA).",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Protein"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "HPA 人类蛋白质图谱分析",
-    "description_cn": "获取蛋白质在组织与细胞系中的半定量表达水平、亚细胞空间定位及免疫组化染色数据。"
-  },
-  {
-    "id": "interpro-database",
-    "name": "interpro-database",
-    "description": "Identify domains, families, and sites in proteins; find all proteins in a family or sharing a domain; explore species distribution for a domain. Combine 14 databases (e.g. Pfam, CDD) and InterPro-N deep learning model.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Protein"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "InterPro 蛋白家族与功能域检索",
-    "description_cn": "识别蛋白中的结构域、家族与活性位点，支持跨物种结构域架构分析及 InterPro-N 神经网络模型匹配。"
-  },
-  {
-    "id": "jaspar-database",
-    "name": "jaspar-database",
-    "description": "Query the JASPAR database for Transcription Factor (TF) binding profiles. Retrieve Position Frequency Matrices (PFMs) or Position Weight Matrices (PWMs) for specific TFs.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Genomics"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "JASPAR 转录因子结合基序检索",
-    "description_cn": "检索 JASPAR 数据库中转录因子结合基质（PFM/PWM），支持 YAML、MEME 等多种矩阵格式导出。"
-  },
-  {
-    "id": "literature-search-biorxiv",
-    "name": "literature-search-biorxiv",
-    "description": "Browse, filter, and download life sciences, biology, and medical preprints from bioRxiv and medRxiv.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Literature"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "bioRxiv/medRxiv 生物医学预印本",
-    "description_cn": "检索并下载 bioRxiv 与 medRxiv 的生命科学和医学最新预印本文献，支持时间范围与学科交叉过滤。"
-  },
-  {
-    "id": "literature-search-europepmc",
-    "name": "literature-search-europepmc",
-    "description": "Search Europe PMC for scientific literature and download open-access full texts and PDFs. Retrieve full-text XML/plain text by PMCID.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Literature"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "Europe PMC 生物医学文献检索",
-    "description_cn": "在 Europe PMC 检索学术成果，支持一键下载开放获取（OA）的 PDF 原文，获取引文分析与文献题录。"
-  },
-  {
     "id": "memory-leak-debugging",
     "name": "memory-leak-debugging",
     "description": "Diagnoses and resolves memory leaks in JavaScript/Node.js applications. Use when a user reports high memory usage, OOM errors, or wants to analyze heapsnapshots or run memory leak detection tools like memlab.",
-    "category": "Bioinformatics & Science",
+    "category": "Frontend & Browser",
     "tags": [
       "Utility"
     ],
@@ -895,7 +657,7 @@
     "id": "modern-web-guidance",
     "name": "modern-web-guidance",
     "description": "Search tool for modern web development best practices. MANDATORY: Execute FIRST for all HTML/CSS and clientside JS tasks. Do NOT skip — web APIs evolve rapidly and training weights contain obsolete patterns. Trigger immediately for: - UI/Layout: Modals, dialogs, popovers, Glassmorphism/backdrop-filters, anchor positioning, container queries, `:has()`, `:user-valid`. - Scroll/Motion: View Transitions, Scroll-driven animations, scroll parallax/reveals. - Performance: CWV (LCP, INP), content-visibility, Fetch Priority, image optimization. - System/APIs: Local filesystem access, WebUSB, WebSockets sync, WebAssembly widgets. - Frameworks: Adapting layout/styles in React, Vue, Angular. - General Frontend: Forms, autofill, advanced inputs, custom scrollbars, modern component states, etc. DO NOT trigger for: - Backend: Database SQL, ORMs, Express API routes. - Pipelines: CI/CD deployment, Docker, Actions. - Generic: Local scripts (Python/Go tools), ESLint, Git.",
-    "category": "Bioinformatics & Science",
+    "category": "Frontend & Browser",
     "tags": [
       "Web",
       "Database",
@@ -910,7 +672,7 @@
     "id": "multi-disciplinary-synthesis",
     "name": "multi-disciplinary-synthesis",
     "description": "Elevates raw themes by researching and synthesizing concepts across disciplines (e.g., neurobiology, cognitive science, complexity theory, game theory, evolutionary anthropology).",
-    "category": "Bioinformatics & Science",
+    "category": "Automation & Workflow",
     "tags": [
       "Science"
     ],
@@ -920,191 +682,10 @@
     "description_cn": "跨越博弈论、演化人类学及认知神经科学等交叉学科，对人类模糊主题进行概念提炼与高度升华。"
   },
   {
-    "id": "ncbi-sequence-fetch",
-    "name": "ncbi-sequence-fetch",
-    "description": "Retrieve protein and nucleotide sequences from NCBI databases using E-utilities. Supports direct accession lookup, CDS translation, and locus lookup.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Genomics"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "NCBI 基因与蛋白序列提取",
-    "description_cn": "通过 NCBI E-utilities 提取核苷酸及氨基酸序列，支持 Accession、Locus 编码及 CDS 区自动翻译翻译。"
-  },
-  {
-    "id": "openfda-database",
-    "name": "openfda-database",
-    "description": "Query, search, and download data from the openFDA API for drugs, devices, foods, tobacco, cosmetics, animal and veterinary products, substances, and transparency data.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Drug"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "openFDA 药物与食品安全数据库",
-    "description_cn": "对接美国 FDA API 检索不良事件、召回信息、说明书变更、上架标签（NDC）及医疗器械审批透明度数据。"
-  },
-  {
-    "id": "opentargets-database",
-    "name": "opentargets-database",
-    "description": "Query Open Targets Platform for target-disease associations, drug target discovery, tractability/safety data, genetics/omics evidence, known drugs, for therapeutic target identification.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Genomics"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "Open Targets 疾病药物靶标库",
-    "description_cn": "查询 Open Targets 平台靶点-疾病关联证据、靶向药安全性、可药性及组学数据，助力新药靶点发现。"
-  },
-  {
-    "id": "pdb-database",
-    "name": "pdb-database",
-    "description": "Use when you want to search for or download experimentally-determined 3D structures for biomolecules (proteins, nucleic acids, bound ligands).",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Protein"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "PDB 生物大分子三维结构库",
-    "description_cn": "检索并下载经实验测定的蛋白质、核酸及其配体三维物理坐标结构文件（PDB/mmCIF 格式）。"
-  },
-  {
-    "id": "protein-sequence-msa",
-    "name": "protein-sequence-msa",
-    "description": "Performs multiple sequence alignment of proteins with EBI Clustal Omega. Use when you need to align multiple sequences to assess similarity, domain conservation, or key residue conservation.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Protein"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "Clustal Omega 多序列比对",
-    "description_cn": "调用 EBI 接口对多条氨基酸序列进行 Clustal Omega 对齐，评估蛋白质序列相似性与保守功能域。"
-  },
-  {
-    "id": "protein-sequence-similarity-search",
-    "name": "protein-sequence-similarity-search",
-    "description": "Searches for homologous protein sequences using MMseqs2 (fast, default) or BLAST (comprehensive, fallback).",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Protein"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "MMseqs2/BLAST 蛋白同源检索",
-    "description_cn": "基于输入蛋白序列，调用 MMseqs2 或 BLAST 检索已知蛋白库，发现同源序列并推断其功能特征。"
-  },
-  {
-    "id": "pubchem-database",
-    "name": "pubchem-database",
-    "description": "Query PubChem, search by name/CID/SMILES, retrieve properties, similarity/substructure searches, bioactivity, for cheminformatics.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Drug"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "PubChem 化学信息学数据库",
-    "description_cn": "通过化学式、SMILES 或名称检索 PubChem 分子属性、相似子结构、化合物纯度及生物活性测试终点。"
-  },
-  {
-    "id": "pubmed-database",
-    "name": "pubmed-database",
-    "description": "Search PubMed for scientific literature, including published clinical trials. Fetch abstracts and full text. Link published research to biological databases.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Literature"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "PubMed 学术文献网络挖掘",
-    "description_cn": "检索 NCBI PubMed 生物医学文献，获取摘要与全文链接，支持多语种医学拼写纠错及 Bulk 提取记录。"
-  },
-  {
-    "id": "pymol",
-    "name": "pymol",
-    "description": "Visualize, analyze, and render protein and molecular structures using PyMOL. Use when the user wants to create images of protein structures, perform structural alignments or superposition, measure distances or contacts, highlight binding sites or active site residues, color by B-factor/pLDDT, or analyze protein-ligand interactions. Do not use for docking, molecular dynamics, or sequence-only analysis.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "PyMOL 结构动力学可视化",
-    "description_cn": "调用 PyMOL 渲染三维蛋白质模型，支持计算界面配体接触、显示 B-factor 及绘制高质量科研配图。"
-  },
-  {
-    "id": "quickgo-database",
-    "name": "quickgo-database",
-    "description": "Query the QuickGO and Evidence & Conclusion Ontology (ECO) REST API. Map genes to biological processes, molecular functions, or cellular components.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Ontology"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "QuickGO 基因功能本体分析",
-    "description_cn": "利用 QuickGO API 查询基因的 GO 本体特征分类（生物学过程、分子功能及细胞组分）与 ECO 循证水平。"
-  },
-  {
-    "id": "reactome-database",
-    "name": "reactome-database",
-    "description": "Query the Reactome database (Analysis and Content Services) for pathway analysis, gene list enrichment, and pathway hierarchy diagram export.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Genomics"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "Reactome 信号通路富集分析",
-    "description_cn": "查询 Reactome 信号通路数据库，开展候选基因列表富集分析（Overrepresentation）并生成通路结构示意图。"
-  },
-  {
-    "id": "science_skills_common",
-    "name": "science-skills-common",
-    "description": "Shared Python package for Science Skills, currently containing http_client -- a unified HTTP client with rate limiting, retries, and exponential backoff. Not a standalone agent skill. Do not invoke directly.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Python"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "Science Skills Common",
-    "description_cn": "Shared Python package for Science Skills, currently containing http_client -- a unified HTTP client with rate limiting, retries, and exponential backoff. Not a standalone agent skill. Do not invoke directly."
-  },
-  {
-    "id": "string-database",
-    "name": "string-database",
-    "description": "Query the STRING database for protein-protein interactions (PPIs), functional enrichment, and homology.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Protein"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "STRING 蛋白质相互作用网络",
-    "description_cn": "查询 STRING 蛋白质相互作用数据库，提取互作网络置信度、共表达强度、同源性证据及功能富集结果。"
-  },
-  {
     "id": "troubleshooting",
     "name": "troubleshooting",
     "description": "Uses Chrome DevTools MCP and documentation to troubleshoot connection and target issues. Trigger this skill when list_pages, new_page, or navigate_page fail, or when the server initialization fails.",
-    "category": "Bioinformatics & Science",
+    "category": "Frontend & Browser",
     "tags": [
       "Web"
     ],
@@ -1112,48 +693,6 @@
     "publisher": "Google Antigravity",
     "name_cn": "DevTools 连接调试除错",
     "description_cn": "解决浏览器自动化环境下的页面挂起、网络拦截报错、DevTools 通信超时等底层的环境连接故障。"
-  },
-  {
-    "id": "ucsc-conservation-and-tfbs",
-    "name": "ucsc-conservation-and-tfbs",
-    "description": "Fetch Evolutionary Conservation scores (phyloP, phastCons) and Transcription Factor Binding Sites (TFBS) from the UCSC Genome Browser.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Genomics"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "UCSC 进化保守度与转录因子结合",
-    "description_cn": "获取基因组物理区段的进化保守性得分（phyloP/phastCons）及 ENCODE/JASPAR 转录因子结合位点。"
-  },
-  {
-    "id": "unibind-database",
-    "name": "unibind-database",
-    "description": "Queries the UniBind database for experimentally validated transcription factor (TF) binding sites.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Genomics"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "UniBind 实证转录结合数据集",
-    "description_cn": "从 UniBind 数据库中获取经实验鉴定（ChIP-seq）的转录因子结合图谱及结合位点物理坐标。"
-  },
-  {
-    "id": "uniprot-database",
-    "name": "uniprot-database",
-    "description": "Access protein metadata, function, taxonomy, and sequences across UniProtKB, UniParc, and UniRef.",
-    "category": "Bioinformatics & Science",
-    "tags": [
-      "Science",
-      "Protein"
-    ],
-    "version": "v1",
-    "publisher": "Google Antigravity",
-    "name_cn": "UniProt 蛋白质枢纽检索",
-    "description_cn": "匹配 UniProtKB 蛋白元数据、分子功能、分类学分布及相关文献，提供高可信度功能域注释检索。"
   },
   {
     "id": "accidental-data-loss-prevention",
@@ -1654,5 +1193,115 @@
     "publisher": "Google Antigravity",
     "name_cn": "Agent 损坏技能包修复",
     "description_cn": "自动审查当前运行环境下的损坏技能，协助补齐依赖、修正 `manifest.json` 元数据配置并重新安装。"
+  },
+  {
+    "id": "ai_media_production_pipeline",
+    "name": "ai-media-production-pipeline",
+    "description": "AI-Powered Media Production Pipeline: An automated pipeline that rewrites high-noise articles using strict de-AI rules into punchy copy, compiles Flux.1 image prompts and Kling/Runway video parameters, and generates a visual Obsidian Canvas layout.",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Content",
+      "Obsidian",
+      "Workflow"
+    ],
+    "version": "1.0.0",
+    "publisher": "Rowan & Antigravity",
+    "name_cn": "🎬 自媒体智能出片管线",
+    "description_cn": "自媒体智能出片管线：一键将高噪主题重塑为无AI腔、高Perplexity of 痛点故事分镜，自动编译为2x2精确定位的Obsidian Canvas控制看板，且同步输出Flux.1原画级提示词与可灵/Runway精准运镜及动效笔刷控制参数。"
+  },
+  {
+    "id": "generative_art_cover_generator",
+    "name": "generative-art-cover-generator",
+    "description": "Generative Art & Book Cover Designer: Creates organic Perlin noise flow field animations using p5.js with editorial typography, dual-DPI print-ready exporting (2160x2880), and responsive mockup rendering.",
+    "category": "Frontend & Browser",
+    "tags": [
+      "UI",
+      "Design",
+      "p5.js",
+      "Canvas"
+    ],
+    "version": "1.0.0",
+    "publisher": "Rowan & Antigravity",
+    "name_cn": "🎨 动态生成艺术与书封设计器",
+    "description_cn": "动态生成艺术与书封设计器：利用 p5.js 与 Perlin 噪声流场算法绘制有机律动图景，结合中英文双衬线字型实现杂志级排版。内嵌 Canvas 视口物理缩放框架，支持双倍超高清（2160x2880）印刷级无损 PNG 一键导出。"
+  },
+  {
+    "id": "github_pages_automated_deployment",
+    "name": "github-pages-automated-deployment",
+    "description": "Automated GitHub Pages zero-config deployment using gh CLI under system-level SOCKS5/HTTP proxies to handle network blocks and instantly configure Pages hosting.",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Deploy",
+      "GitHub",
+      "Git",
+      "API"
+    ],
+    "version": "1.0.0",
+    "publisher": "Rowan & Antigravity",
+    "name_cn": "🌐 GitHub Pages 极简代理部署",
+    "description_cn": "GitHub Pages 极简代理部署：自动清理本地工作区，配置 system-level SOCKS5 代理解决终端网络不通问题，调用 GitHub API 远程建库并一键开启 Pages 托管，输出秒级生效的在线预览链接。"
+  },
+  {
+    "id": "design-contract-builder",
+    "name": "design-contract-builder",
+    "description": "Design Contract Builder: Turn a project brief and reference site analysis into explicit design tokens, layout parameters, motion characteristics, media budgets, and prohibited visual clutter patterns.",
+    "category": "Frontend & Browser",
+    "tags": [
+      "UI",
+      "Design",
+      "Workflow",
+      "Token"
+    ],
+    "version": "1.0.0",
+    "publisher": "Rowan & Antigravity",
+    "name_cn": "📏 视觉设计契约构建器",
+    "description_cn": "视觉设计契约构建器：将创意简报与优秀站解构分析，编译为语义明确的设计 Token（色板、间距、字体等）与页面排版规则。限制页面最大行宽及堆砌性装饰，以保障阅读无障碍与美学克制。"
+  },
+  {
+    "id": "writing_pipeline_orchestrator",
+    "name": "writing-pipeline-orchestrator",
+    "description": "Writing Pipeline Orchestrator: Combines source de-noising, fact/citation verification, and human-style column polishing into a unified macro-scheduled long-form writing pipeline.",
+    "category": "Automation & Workflow",
+    "tags": [
+      "Content",
+      "Writing",
+      "Orchestration"
+    ],
+    "version": "1.0.0",
+    "publisher": "Rowan & Antigravity",
+    "name_cn": "✍️ 写作管线宏观调度器",
+    "description_cn": "写作管线宏观调度器：将非结构化材料清洗脱水、学术引文联网核对及去AI腔人声重塑三个独立技能模块有机整合，建立基于前置写作契约（受众定位/排版限制/金句提炼）的一站式长文交付管线。"
+  },
+  {
+    "id": "blender_parameterized_modeling",
+    "name": "blender-parameterized-modeling",
+    "description": "Blender Parameterized Modeling: Direct parameter-based object and animation generation using Blender's Python API (bpy) with local LLMs, achieving absolute topology control.",
+    "category": "Frontend & Browser",
+    "tags": [
+      "3D",
+      "Blender",
+      "Python",
+      "Design"
+    ],
+    "version": "1.0.0",
+    "publisher": "Rowan & Antigravity",
+    "name_cn": "🧊 Blender 参数化三维建模器",
+    "description_cn": "Blender 参数化三维建模器：编写严格的 Blender Python (bpy) 脚本控制网格、顶点和几何体创建。利用无界面运行模式（headless render）和本地大模型，实现零网格粘连的精细拓扑模型产出。"
+  },
+  {
+    "id": "hyperframes_code_video_renderer",
+    "name": "hyperframes-code-video-renderer",
+    "description": "HyperFrames Code Video Renderer: Renders pure HTML/CSS/GSAP scene timelines into professional MP4 videos using headless Chrome frame recording.",
+    "category": "Frontend & Browser",
+    "tags": [
+      "Video",
+      "GSAP",
+      "Canvas",
+      "Web"
+    ],
+    "version": "1.0.0",
+    "publisher": "Rowan & Antigravity",
+    "name_cn": "🎬 HyperFrames 代码视频渲染器",
+    "description_cn": "HyperFrames 代码视频渲染器：将 AI 生成的 HTML 场景和 GSAP 时间轴动画，通过 Headless Chrome 逐帧截图录制为高清 MP4 视频，实现低成本且高清晰度的代码化视频生产。"
   }
 ]
