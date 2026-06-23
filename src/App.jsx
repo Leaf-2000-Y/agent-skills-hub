@@ -554,7 +554,7 @@ function App() {
         <div className="sidebar-footer">
           <div className="sidebar-version-badge">WORKSPACE: ROWAN_OS</div>
           <div className="sidebar-version-badge">ENG: ANTIGRAVITY</div>
-          <div className="sidebar-version-badge" style={{ color: 'var(--accent-gold)' }}>BUILD: 2026.06.21</div>
+          <div className="sidebar-version-badge" style={{ color: 'var(--accent-gold)' }}>BUILD: 2026.06.23</div>
         </div>
       </aside>
 
