@@ -736,6 +736,32 @@ body {
   color: var(--text-main);
 }
 
+.compare-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  color: var(--text-muted);
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.7rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.compare-btn:hover {
+  background: rgba(92, 173, 255, 0.08);
+  border-color: rgba(92, 173, 255, 0.3);
+  color: var(--accent-blue);
+}
+
+.compare-btn.active {
+  background: rgba(92, 173, 255, 0.15);
+  border-color: var(--accent-blue);
+  color: #ffffff;
+}
+
 /* New layout styling additions */
 .hero-right-container {
   display: flex;
@@ -1134,3 +1160,381 @@ body {
   }
 }
 
+/* ==========================================
+   Manage Mode & Admin Controls
+   ========================================== */
+.manage-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-left: 0.5rem;
+}
+
+.manage-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+}
+
+.manage-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider-switch {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  transition: .3s;
+  border-radius: 34px;
+}
+
+.slider-switch:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--text-muted);
+  transition: .3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider-switch {
+  background-color: rgba(246, 194, 93, 0.2);
+  border-color: var(--accent-gold);
+}
+
+input:checked + .slider-switch:before {
+  transform: translateX(22px);
+  background-color: var(--accent-gold);
+}
+
+/* Delete button on cards */
+.card-delete-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(255, 124, 92, 0.15);
+  border: 1px solid rgba(255, 124, 92, 0.3);
+  color: var(--accent-orange);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.card-delete-btn:hover {
+  background: var(--accent-orange);
+  color: var(--bg-color);
+  box-shadow: 0 0 10px rgba(255, 124, 92, 0.4);
+}
+
+/* Add Skill Floating Action Button */
+.add-skill-fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+  color: var(--bg-color);
+  border: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 98;
+  box-shadow: 0 8px 24px rgba(246, 194, 93, 0.35);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.add-skill-fab:hover {
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 12px 32px rgba(246, 194, 93, 0.5);
+}
+
+/* Form Styles */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.form-input, .form-select, .form-textarea {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  color: var(--text-main);
+  font-size: 0.85rem;
+  outline: none;
+  font-family: var(--font-sans);
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--accent-gold);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+}
+
+.btn-primary {
+  background: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+  color: var(--bg-color);
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent-gold-soft);
+  box-shadow: 0 0 12px rgba(246, 194, 93, 0.3);
+}
+
+/* --- FLOATING COMPARE BAR --- */
+.compare-bar-floating {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 55%;
+  transform: translateX(-50%);
+  z-index: 99;
+  background: rgba(12, 17, 24, 0.96);
+  border: 1px solid var(--accent-blue);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 15px rgba(92, 173, 255, 0.25);
+  padding: 0.8rem 1.5rem;
+  max-width: 80%;
+  width: 780px;
+  animation: slideUpCompare 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUpCompare {
+  from {
+    bottom: -5rem;
+    opacity: 0;
+  }
+  to {
+    bottom: 1.5rem;
+    opacity: 1;
+  }
+}
+
+.compare-bar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.compare-bar-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.compare-count-badge {
+  background: var(--accent-blue);
+  color: #0c1118;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.8rem;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.compare-label-text {
+  font-size: 0.82rem;
+  color: var(--text-main);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.compared-thumbnails {
+  display: flex;
+  gap: 0.6rem;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.compared-thumbnails::-webkit-scrollbar {
+  display: none;
+}
+
+.compared-thumbnail-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 0.35rem 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.thumb-name {
+  font-size: 0.75rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.thumb-remove {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0 0.1rem;
+  line-height: 1;
+}
+
+.thumb-remove:hover {
+  color: var(--accent-orange);
+}
+
+.compare-bar-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-shrink: 0;
+}
+
+.compare-clear-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.compare-clear-btn:hover {
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+  background: rgba(255, 124, 92, 0.05);
+}
+
+.compare-trigger-btn {
+  background: var(--accent-blue);
+  border: none;
+  color: #0c1118;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.compare-trigger-btn:hover:not(:disabled) {
+  background: #7ec1ff;
+  box-shadow: 0 0 12px rgba(92, 173, 255, 0.4);
+}
+
+.compare-trigger-btn:disabled {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+}
+
+/* --- COMPARISON TABLE OVERLAY --- */
+.comparison-modal-content {
+  background: #080c11 !important;
+  border: 1px solid rgba(92, 173, 255, 0.3) !important;
+  box-shadow: 0 0 40px rgba(92, 173, 255, 0.15) !important;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.comparison-table-wrapper {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  max-height: calc(90vh - 120px);
+  overflow-y: auto;
+}
+
+.comparison-table th {
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--panel-border);
+}
+
+.comparison-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  vertical-align: top;
+  color: var(--text-muted);
+}
+
+.comparison-table tr:hover td {
+  background: rgba(255, 255, 255, 0.01);
+}

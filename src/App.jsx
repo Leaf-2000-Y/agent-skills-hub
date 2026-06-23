@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import skillsData from './data/skills.json';
 import externalSkills from './data/external_skills.json';
+import casesData from './data/cases.json';
 
 // Highlight key framework skills
 const FEATURED_IDS = [
@@ -117,6 +118,55 @@ function App() {
     return localStorage.getItem('aetherskills_page_mode') || 'proprietary';
   });
 
+  const [comparedSkills, setComparedSkills] = useState([]);
+  const [showCompareModal, setShowCompareModal] = useState(false);
+
+  const handleToggleCompare = (skill, e) => {
+    e.stopPropagation();
+    setComparedSkills(prev => {
+      const exists = prev.some(s => s.id === skill.id);
+      if (exists) {
+        return prev.filter(s => s.id !== skill.id);
+      }
+      if (prev.length >= 3) {
+        alert("最多只能同时对比 3 个技能。");
+        return prev;
+      }
+      return [...prev, skill];
+    });
+  };
+
+  const [skillsList, setSkillsList] = useState(() => {
+    const localAdded = JSON.parse(localStorage.getItem('aetherskills_added_skills') || '[]');
+    const localDeleted = JSON.parse(localStorage.getItem('aetherskills_deleted_skills') || '[]');
+    const combined = [...skillsData, ...localAdded];
+    return combined.filter(s => !localDeleted.includes(s.id));
+  });
+
+  const [externalSkillsList, setExternalSkillsList] = useState(() => {
+    const localAdded = JSON.parse(localStorage.getItem('aetherskills_added_external') || '[]');
+    const localDeleted = JSON.parse(localStorage.getItem('aetherskills_deleted_external') || '[]');
+    const combined = [...externalSkills, ...localAdded];
+    return combined.filter(s => !localDeleted.includes(s.id));
+  });
+
+  const [isManageMode, setIsManageMode] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [newSkillForm, setNewSkillForm] = useState({
+    id: '',
+    name: '',
+    name_cn: '',
+    description: '',
+    description_cn: '',
+    category: '',
+    tags: '',
+    version: '1.0.0',
+    publisher: 'User',
+    source_platform: 'GitHub',
+    source_url: '',
+    rating: 5
+  });
+
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('All');
   const [sourceFilter, setSourceFilter] = useState('All'); // 'All' | 'Proprietary' | 'Community'
@@ -148,8 +198,8 @@ function App() {
     { id: '多媒体与设计效率', label: '多媒体与设计效率' }
   ];
 
-  const totalSkills = skillsData.length;
-  const lastUpdated = "2026-06-21";
+  const totalSkills = skillsList.length;
+  const lastUpdated = "2026-06-23";
 
   // Handle page mode toggle
   const handlePageModeChange = (mode) => {
@@ -159,7 +209,7 @@ function App() {
 
   // Filter skills for Proprietary Mode
   const filteredSkills = useMemo(() => {
-    return skillsData.filter(skill => {
+    return skillsList.filter(skill => {
       const query = searchQuery.toLowerCase();
       const matchesSearch = 
         skill.name.toLowerCase().includes(query) ||
@@ -179,11 +229,11 @@ function App() {
       
       return matchesSearch && matchesTab && matchesSource;
     });
-  }, [searchQuery, activeTab, sourceFilter]);
+  }, [searchQuery, activeTab, sourceFilter, skillsList]);
 
   // Filter skills for External Mode
   const filteredExternalSkills = useMemo(() => {
-    return externalSkills.filter(skill => {
+    return externalSkillsList.filter(skill => {
       const query = searchQuery.toLowerCase();
       const matchesSearch = 
         skill.name.toLowerCase().includes(query) ||
@@ -198,11 +248,11 @@ function App() {
       
       return matchesSearch && matchesCategory && matchesPlatform && matchesRating;
     });
-  }, [searchQuery, extCategoryFilter, extPlatformFilter, extRatingFilter]);
+  }, [searchQuery, extCategoryFilter, extPlatformFilter, extRatingFilter, externalSkillsList]);
 
   // Compute counts for the source filter based on current search & category context
   const sourceCounts = useMemo(() => {
-    const baseList = skillsData.filter(skill => {
+    const baseList = skillsList.filter(skill => {
       const query = searchQuery.toLowerCase();
       const matchesSearch = 
         skill.name.toLowerCase().includes(query) ||
@@ -220,17 +270,96 @@ function App() {
     const community = all - proprietary;
 
     return { all, proprietary, community };
-  }, [searchQuery, activeTab]);
+  }, [searchQuery, activeTab, skillsList]);
 
   // Featured skills (Proprietary mode)
   const featuredSkills = useMemo(() => {
-    return skillsData.filter(skill => FEATURED_IDS.includes(skill.id));
-  }, []);
+    return skillsList.filter(skill => FEATURED_IDS.includes(skill.id));
+  }, [skillsList]);
 
   // Rowan 5-Star Featured skills (External mode)
   const extFeaturedSkills = useMemo(() => {
-    return externalSkills.filter(skill => skill.rating === 5);
-  }, []);
+    return externalSkillsList.filter(skill => skill.rating === 5);
+  }, [externalSkillsList]);
+
+  const handleAddSkillSubmit = (e) => {
+    e.preventDefault();
+    if (!newSkillForm.id) return;
+    
+    const formattedTags = newSkillForm.tags 
+      ? newSkillForm.tags.split(',').map(t => t.trim()) 
+      : ['Custom'];
+
+    const defaultCategory = pageMode === 'proprietary' 
+      ? '开发效率与工具' 
+      : '开发协同与系统控制';
+
+    const newSkillObj = {
+      id: newSkillForm.id,
+      name: newSkillForm.name || newSkillForm.id,
+      name_cn: newSkillForm.name_cn || newSkillForm.id,
+      description: newSkillForm.description || newSkillForm.description_cn,
+      description_cn: newSkillForm.description_cn || newSkillForm.description,
+      category: newSkillForm.category || defaultCategory,
+      tags: formattedTags,
+      version: newSkillForm.version || '1.0.0',
+      publisher: newSkillForm.publisher || 'User',
+      source_platform: newSkillForm.source_platform || 'GitHub',
+      source_url: newSkillForm.source_url || '',
+      rating: parseInt(newSkillForm.rating) || 5
+    };
+
+    if (pageMode === 'proprietary') {
+      const updated = [...skillsList, newSkillObj];
+      setSkillsList(updated);
+      const localAdded = JSON.parse(localStorage.getItem('aetherskills_added_skills') || '[]');
+      localStorage.setItem('aetherskills_added_skills', JSON.stringify([...localAdded, newSkillObj]));
+    } else {
+      const updated = [...externalSkillsList, newSkillObj];
+      setExternalSkillsList(updated);
+      const localAdded = JSON.parse(localStorage.getItem('aetherskills_added_external') || '[]');
+      localStorage.setItem('aetherskills_added_external', JSON.stringify([...localAdded, newSkillObj]));
+    }
+
+    setShowAddModal(false);
+    setNewSkillForm({
+      id: '',
+      name: '',
+      name_cn: '',
+      description: '',
+      description_cn: '',
+      category: '',
+      tags: '',
+      version: '1.0.0',
+      publisher: 'User',
+      source_platform: 'GitHub',
+      source_url: '',
+      rating: 5
+    });
+  };
+
+  const handleDeleteSkill = (skillId, e) => {
+    e.stopPropagation();
+    if (pageMode === 'proprietary') {
+      const updated = skillsList.filter(s => s.id !== skillId);
+      setSkillsList(updated);
+      const localDeleted = JSON.parse(localStorage.getItem('aetherskills_deleted_skills') || '[]');
+      if (!localDeleted.includes(skillId)) {
+        localStorage.setItem('aetherskills_deleted_skills', JSON.stringify([...localDeleted, skillId]));
+      }
+      const localAdded = JSON.parse(localStorage.getItem('aetherskills_added_skills') || '[]');
+      localStorage.setItem('aetherskills_added_skills', JSON.stringify(localAdded.filter(s => s.id !== skillId)));
+    } else {
+      const updated = externalSkillsList.filter(s => s.id !== skillId);
+      setExternalSkillsList(updated);
+      const localDeleted = JSON.parse(localStorage.getItem('aetherskills_deleted_external') || '[]');
+      if (!localDeleted.includes(skillId)) {
+        localStorage.setItem('aetherskills_deleted_external', JSON.stringify([...localDeleted, skillId]));
+      }
+      const localAdded = JSON.parse(localStorage.getItem('aetherskills_added_external') || '[]');
+      localStorage.setItem('aetherskills_added_external', JSON.stringify(localAdded.filter(s => s.id !== skillId)));
+    }
+  };
 
   const handleCopy = (skill, e) => {
     e.stopPropagation();
@@ -264,15 +393,30 @@ function App() {
           >
             外部精选
           </button>
+          <button 
+            className={`view-btn ${pageMode === 'cases' ? 'active' : ''}`}
+            onClick={() => handlePageModeChange('cases')}
+          >
+            组合案例
+          </button>
         </div>
 
         {/* 动态控制的侧边栏过滤器 */}
-        {pageMode === 'proprietary' ? (
+        {pageMode === 'cases' ? (
+          <div className="sidebar-section">
+            <span className="sidebar-section-title">案例库目录</span>
+            <div className="sidebar-nav-list">
+              <div style={{ padding: '0.8rem 1rem', fontSize: '0.8rem', color: 'var(--text-muted)', lineHeight: '1.5' }}>
+                💡 汇聚 Rowan 与 Antigravity 的高含金量实操案例，揭示多个核心 Skills 协同做功的物理配方。
+              </div>
+            </div>
+          </div>
+        ) : pageMode === 'proprietary' ? (
           <div className="sidebar-section">
             <span className="sidebar-section-title">自研品类过滤</span>
             <div className="sidebar-nav-list">
               {tabs.map(tab => {
-                const count = skillsData.filter(skill => {
+                const count = skillsList.filter(skill => {
                   const skillCat = getNewCategory(skill);
                   const matchesTab = tab.id === 'All' || skillCat === tab.id;
                   
@@ -304,7 +448,7 @@ function App() {
               <span className="sidebar-section-title">外部分类过滤</span>
               <div className="sidebar-nav-list">
                 {extCategories.map(cat => {
-                  const count = externalSkills.filter(s => {
+                  const count = externalSkillsList.filter(s => {
                     const query = searchQuery.toLowerCase();
                     const matchesSearch = 
                       s.name.toLowerCase().includes(query) ||
@@ -338,7 +482,7 @@ function App() {
               <span className="sidebar-section-title">平台来源</span>
               <div className="sidebar-nav-list">
                 {['All', 'GitHub', 'Anthropic', 'Vercel'].map(platform => {
-                  const count = externalSkills.filter(s => {
+                  const count = externalSkillsList.filter(s => {
                     const query = searchQuery.toLowerCase();
                     const matchesSearch = 
                       s.name.toLowerCase().includes(query) ||
@@ -375,7 +519,7 @@ function App() {
                   { id: '5', label: '⭐⭐⭐⭐⭐ 五星级' },
                   { id: '4', label: '⭐⭐⭐⭐ 四星级' }
                 ].map(ratingItem => {
-                  const count = externalSkills.filter(s => {
+                  const count = externalSkillsList.filter(s => {
                     const query = searchQuery.toLowerCase();
                     const matchesSearch = 
                       s.name.toLowerCase().includes(query) ||
@@ -440,6 +584,17 @@ function App() {
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
                 </div>
+                <div className="manage-toggle-container">
+                  <span>管理模式</span>
+                  <label className="manage-switch">
+                    <input 
+                      type="checkbox" 
+                      checked={isManageMode}
+                      onChange={(e) => setIsManageMode(e.target.checked)}
+                    />
+                    <span className="slider-switch"></span>
+                  </label>
+                </div>
                 <a 
                   href="https://github.com/Leaf-2000-Y/agent-skills-hub" 
                   target="_blank" 
@@ -459,7 +614,17 @@ function App() {
             {/* Hero Banner Area */}
             <section className="hero-grid">
               <div className="hero-left">
-                {pageMode === 'proprietary' ? (
+                {pageMode === 'cases' ? (
+                  <>
+                    <h1 className="hero-title">
+                      <span>Classic Production Cases</span>
+                      经典案例与技能组合包
+                    </h1>
+                    <p className="hero-desc">
+                      探索具体业务场景下的 Skills 物理做功组装配方。每一个案例都汇聚了多个垂直技能，形成了已知良好的增量工作流，展现了从语言到界面的全谱系交付能力。
+                    </p>
+                  </>
+                ) : pageMode === 'proprietary' ? (
                   <>
                     <h1 className="hero-title">
                       <span>Antigravity & Codex Weaponry</span>
@@ -484,7 +649,32 @@ function App() {
 
               <div className="hero-right-container">
                 {/* Bento Stats Panel (Adaptive) */}
-                {pageMode === 'proprietary' ? (
+                {pageMode === 'cases' ? (
+                  <div className="bento-card" style={{ borderColor: 'rgba(220, 174, 150, 0.2)' }}>
+                    <div>
+                      <span className="focus-badge" style={{ background: 'rgba(220, 174, 150, 0.1)', color: 'var(--accent-orange)' }}>CASE STUDY</span>
+                      <h3 className="bento-title">案例组合统计</h3>
+                    </div>
+                    <div className="stats-grid">
+                      <div className="stat-item">
+                        <span className="stat-value">{casesData.length}</span>
+                        <span className="stat-label">收录经典案例</span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-value">12</span>
+                        <span className="stat-label">关联核心技能</span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-value">100%</span>
+                        <span className="stat-label">物理做功闭环</span>
+                      </div>
+                      <div className="stat-item">
+                        <span className="stat-value">超高清</span>
+                        <span className="stat-label">成果品质</span>
+                      </div>
+                    </div>
+                  </div>
+                ) : pageMode === 'proprietary' ? (
                   <div className="bento-card">
                     <div>
                       <span className="focus-badge">SYSTEM METRICS</span>
@@ -603,11 +793,19 @@ function App() {
                             {skill.description_cn}
                           </p>
                         </div>
-                        <div className="card-footer" style={{ marginTop: '1rem' }}>
+                        <div className="card-footer" style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                           <span className="publisher-info">BY {skill.publisher}</span>
-                          <button className="detail-btn" onClick={() => setSelectedSkill(skill)}>
-                            展开详情 <span>→</span>
-                          </button>
+                          <div style={{ display: 'flex', gap: '0.4rem' }}>
+                            <button 
+                              className={`compare-btn ${comparedSkills.some(s => s.id === skill.id) ? 'active' : ''}`}
+                              onClick={(e) => handleToggleCompare(skill, e)}
+                            >
+                              {comparedSkills.some(s => s.id === skill.id) ? '✓ 已选' : '对比'}
+                            </button>
+                            <button className="detail-btn" onClick={() => setSelectedSkill(skill)}>
+                              展开详情 <span>→</span>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -652,15 +850,24 @@ function App() {
                         </div>
                         <div className="card-footer" style={{ marginTop: '1.2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                           <span className="publisher-info">BY {skill.publisher}</span>
-                          <a 
-                            href={skill.source_url} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="source-badge"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            🌐 访问源项目
-                          </a>
+                          <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
+                            <button 
+                              className={`compare-btn ${comparedSkills.some(s => s.id === skill.id) ? 'active' : ''}`}
+                              onClick={(e) => handleToggleCompare(skill, e)}
+                              style={{ padding: '3px 8px', fontSize: '0.65rem' }}
+                            >
+                              {comparedSkills.some(s => s.id === skill.id) ? '✓ 已选' : '对比'}
+                            </button>
+                            <a 
+                              href={skill.source_url} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="source-badge"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              🌐 源项目
+                            </a>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -670,7 +877,91 @@ function App() {
             )}
 
             {/* Categories Tabs, Source Switcher & List */}
-            {pageMode === 'proprietary' ? (
+            {pageMode === 'cases' ? (
+              <section>
+                <div className="section-header" style={{ marginBottom: '1.5rem' }}>
+                  <h2 className="section-title">
+                    {searchQuery ? `案例筛选结果 (${casesData.filter(c => c.name_cn.includes(searchQuery) || c.description_cn.includes(searchQuery)).length})` : '经典案例配方归档'}
+                  </h2>
+                </div>
+                <div className="archive-grid">
+                  {casesData
+                    .filter(c => {
+                      const query = searchQuery.toLowerCase();
+                      return c.name_cn.toLowerCase().includes(query) || 
+                             c.name_en.toLowerCase().includes(query) ||
+                             c.description_cn.toLowerCase().includes(query) ||
+                             c.description_en.toLowerCase().includes(query);
+                    })
+                    .map(c => (
+                      <div 
+                        key={c.id} 
+                        className="archive-card case-card"
+                        style={{ padding: '1.8rem', display: 'flex', flexDirection: 'column', gap: '1.2rem', background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.04)', position: 'relative' }}
+                      >
+                        <div>
+                          <div className="archive-top" style={{ marginBottom: '0.4rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                            <h4 className="archive-title" style={{ fontSize: '1.1rem', color: 'var(--accent-gold)' }}>
+                              {c.name_cn}
+                            </h4>
+                            <span className="archive-category" style={{ fontSize: '0.65rem', background: 'rgba(220, 174, 150, 0.1)', color: 'var(--accent-orange)', border: '1px solid rgba(220, 174, 150, 0.2)', padding: '2px 6px', borderRadius: '4px' }}>CASE</span>
+                          </div>
+                          <div style={{ fontSize: '0.72rem', color: 'var(--text-dark)', fontFamily: 'monospace', marginBottom: '0.8rem' }}>
+                            {c.name_en}
+                          </div>
+                          <p className="archive-desc" style={{ fontSize: '0.82rem', color: 'var(--text-main)', lineHeight: '1.5', marginBottom: '0.5rem' }}>
+                            {c.description_cn}
+                          </p>
+                          <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>
+                            {c.description_en}
+                          </p>
+                        </div>
+
+                        <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '1rem', marginTop: 'auto' }}>
+                          <span style={{ fontSize: '0.75rem', color: 'var(--text-dark)', fontWeight: '600', display: 'block', marginBottom: '0.6rem' }}>🛠️ 调用的 Skills 组合配方：</span>
+                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
+                            {c.skills_combined.map(skillId => {
+                              const skillObj = skillsList.find(s => s.id === skillId) || externalSkillsList.find(s => s.id === skillId);
+                              const nameShow = skillObj ? skillObj.name_cn : skillId;
+                              return (
+                                <button
+                                  key={skillId}
+                                  className="tag-pill-btn"
+                                  style={{ 
+                                    cursor: 'pointer', 
+                                    border: '1px solid rgba(255,255,255,0.08)',
+                                    background: 'rgba(255,255,255,0.03)',
+                                    color: '#ffffff',
+                                    padding: '4px 8px',
+                                    borderRadius: '6px',
+                                    fontSize: '0.7rem',
+                                    transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
+                                  }}
+                                  onClick={() => {
+                                    if (skillObj) {
+                                      setSelectedSkill(skillObj);
+                                    } else {
+                                      alert(`未找到该技能的本地记录：${skillId}`);
+                                    }
+                                  }}
+                                  title="点击查看此 Skill 详细规范"
+                                >
+                                  {nameShow}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                        <div style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.02)', borderRadius: '8px', padding: '0.8rem 1rem', fontSize: '0.78rem' }}>
+                          <span style={{ color: 'var(--text-dark)', fontWeight: '600', marginRight: '0.5rem' }}>🎯 成果交付：</span>
+                          <span style={{ color: 'var(--accent-gold-soft)' }}>{c.outcome_preview}</span>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </section>
+            ) : pageMode === 'proprietary' ? (
               <section>
                 <div className="section-header" style={{ marginBottom: '1.5rem' }}>
                   <h2 className="section-title">
@@ -725,8 +1016,17 @@ function App() {
                       key={skill.id} 
                       className="archive-card"
                       onClick={() => setSelectedSkill(skill)}
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: 'pointer', position: 'relative' }}
                     >
+                      {isManageMode && (
+                        <button 
+                          className="card-delete-btn"
+                          onClick={(e) => handleDeleteSkill(skill.id, e)}
+                          title="删除此技能"
+                        >
+                          ✕
+                        </button>
+                      )}
                       <div>
                         <div className="archive-top">
                           <div>
@@ -755,12 +1055,21 @@ function App() {
                             </span>
                           ))}
                         </div>
-                        <button 
-                          className="copy-btn" 
-                          onClick={(e) => handleCopy(skill, e)}
-                        >
-                          {copiedId === skill.id ? '已复制 ✔' : '复制命令'}
-                        </button>
+                        <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
+                          <button 
+                            className={`compare-btn ${comparedSkills.some(s => s.id === skill.id) ? 'active' : ''}`}
+                            onClick={(e) => handleToggleCompare(skill, e)}
+                            style={{ padding: '3px 8px', fontSize: '0.65rem' }}
+                          >
+                            {comparedSkills.some(s => s.id === skill.id) ? '✓ 已选' : '对比'}
+                          </button>
+                          <button 
+                            className="copy-btn" 
+                            onClick={(e) => handleCopy(skill, e)}
+                          >
+                            {copiedId === skill.id ? '已复制 ✔' : '复制命令'}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -786,8 +1095,17 @@ function App() {
                       key={skill.id} 
                       className="archive-card"
                       onClick={() => setSelectedSkill(skill)}
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: 'pointer', position: 'relative' }}
                     >
+                      {isManageMode && (
+                        <button 
+                          className="card-delete-btn"
+                          onClick={(e) => handleDeleteSkill(skill.id, e)}
+                          title="删除此技能"
+                        >
+                          ✕
+                        </button>
+                      )}
                       <div>
                         <div className="archive-top">
                           <div>
@@ -819,12 +1137,21 @@ function App() {
                             BY {skill.publisher}
                           </span>
                         </div>
-                        <button 
-                          className="copy-btn" 
-                          onClick={(e) => handleCopy(skill, e)}
-                        >
-                          {copiedId === skill.id ? '已复制 ✔' : '复制命令'}
-                        </button>
+                        <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
+                          <button 
+                            className={`compare-btn ${comparedSkills.some(s => s.id === skill.id) ? 'active' : ''}`}
+                            onClick={(e) => handleToggleCompare(skill, e)}
+                            style={{ padding: '3px 8px', fontSize: '0.65rem' }}
+                          >
+                            {comparedSkills.some(s => s.id === skill.id) ? '✓ 已选' : '对比'}
+                          </button>
+                          <button 
+                            className="copy-btn" 
+                            onClick={(e) => handleCopy(skill, e)}
+                          >
+                            {copiedId === skill.id ? '已复制 ✔' : '复制命令'}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -918,6 +1245,348 @@ function App() {
                   <div style={{ marginTop: '1.2rem', fontSize: '0.7rem', color: 'var(--text-dark)' }}>
                     * 提示：复制后可在您的开发控制台通过 npx 快速加载此动作拓展。
                   </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Add Skill Floating Action Button */}
+          {isManageMode && (
+            <button 
+              className="add-skill-fab"
+              onClick={() => {
+                setNewSkillForm(prev => ({
+                  ...prev,
+                  category: pageMode === 'proprietary' ? 'AI 代理与工作流' : 'AI增强与提示工程'
+                }));
+                setShowAddModal(true);
+              }}
+              title="添加新技能"
+            >
+              +
+            </button>
+          )}
+
+          {/* Add Skill Modal Dialog */}
+          {showAddModal && (
+            <div className="modal-overlay" onClick={() => setShowAddModal(false)}>
+              <div className="modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '580px' }}>
+                <button className="modal-close" onClick={() => setShowAddModal(false)}>×</button>
+                <h3 className="modal-title" style={{ fontSize: '1.4rem', marginBottom: '1.5rem' }}>
+                  添加新技能 ({pageMode === 'proprietary' ? '自研工坊' : '外部精选'})
+                </h3>
+                <form onSubmit={handleAddSkillSubmit}>
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>唯一标识符 (ID) *</label>
+                      <input 
+                        type="text" 
+                        className="form-input" 
+                        placeholder="e.g. custom-skill-id" 
+                        required
+                        value={newSkillForm.id}
+                        onChange={e => setNewSkillForm({...newSkillForm, id: e.target.value})}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>版本号</label>
+                      <input 
+                        type="text" 
+                        className="form-input" 
+                        value={newSkillForm.version}
+                        onChange={e => setNewSkillForm({...newSkillForm, version: e.target.value})}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>中文译名</label>
+                      <input 
+                        type="text" 
+                        className="form-input" 
+                        placeholder="中文名称"
+                        value={newSkillForm.name_cn}
+                        onChange={e => setNewSkillForm({...newSkillForm, name_cn: e.target.value})}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>英文原名</label>
+                      <input 
+                        type="text" 
+                        className="form-input" 
+                        placeholder="English Name"
+                        value={newSkillForm.name}
+                        onChange={e => setNewSkillForm({...newSkillForm, name: e.target.value})}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>分类板块</label>
+                      <select 
+                        className="form-select"
+                        value={newSkillForm.category}
+                        onChange={e => setNewSkillForm({...newSkillForm, category: e.target.value})}
+                      >
+                        {pageMode === 'proprietary' ? (
+                          tabs.filter(t => t.id !== 'All').map(t => (
+                            <option key={t.id} value={t.id}>{t.label}</option>
+                          ))
+                        ) : (
+                          extCategories.filter(c => c.id !== 'All').map(c => (
+                            <option key={c.id} value={c.id}>{c.label}</option>
+                          ))
+                        )}
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label>标签 (逗号分隔)</label>
+                      <input 
+                        type="text" 
+                        className="form-input" 
+                        placeholder="e.g. Design, Tool"
+                        value={newSkillForm.tags}
+                        onChange={e => setNewSkillForm({...newSkillForm, tags: e.target.value})}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-row">
+                    <div className="form-group">
+                      <label>提供商 / 作者</label>
+                      <input 
+                        type="text" 
+                        className="form-input" 
+                        value={newSkillForm.publisher}
+                        onChange={e => setNewSkillForm({...newSkillForm, publisher: e.target.value})}
+                      />
+                    </div>
+                    {pageMode === 'external' ? (
+                      <div className="form-group">
+                        <label>星级评分</label>
+                        <select 
+                          className="form-select"
+                          value={newSkillForm.rating}
+                          onChange={e => setNewSkillForm({...newSkillForm, rating: e.target.value})}
+                        >
+                          <option value="5">★★★★★ 五星级</option>
+                          <option value="4">★★★★ 四星级</option>
+                          <option value="3">★★★ 三星级</option>
+                        </select>
+                      </div>
+                    ) : null}
+                  </div>
+
+                  {pageMode === 'external' && (
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label>来源平台</label>
+                        <select 
+                          className="form-select"
+                          value={newSkillForm.source_platform}
+                          onChange={e => setNewSkillForm({...newSkillForm, source_platform: e.target.value})}
+                        >
+                          <option value="GitHub">GitHub</option>
+                          <option value="Anthropic">Anthropic</option>
+                          <option value="Vercel">Vercel</option>
+                        </select>
+                      </div>
+                      <div className="form-group">
+                        <label>项目源网页 URL</label>
+                        <input 
+                          type="text" 
+                          className="form-input" 
+                          placeholder="https://github.com/..."
+                          value={newSkillForm.source_url}
+                          onChange={e => setNewSkillForm({...newSkillForm, source_url: e.target.value})}
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="form-group">
+                    <label>中文详细介绍</label>
+                    <textarea 
+                      className="form-textarea" 
+                      rows="2"
+                      placeholder="介绍技能主要用途..."
+                      value={newSkillForm.description_cn}
+                      onChange={e => setNewSkillForm({...newSkillForm, description_cn: e.target.value})}
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label>English Description</label>
+                    <textarea 
+                      className="form-textarea" 
+                      rows="2"
+                      placeholder="Detailed explanation in English..."
+                      value={newSkillForm.description}
+                      onChange={e => setNewSkillForm({...newSkillForm, description: e.target.value})}
+                    />
+                  </div>
+
+                  <div className="form-actions">
+                    <button type="button" className="btn-secondary" onClick={() => setShowAddModal(false)}>
+                      取消
+                    </button>
+                    <button type="submit" className="btn-primary">
+                      添加技能
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          )}
+
+          {/* Floating Compare Bar */}
+          {comparedSkills.length > 0 && (
+            <div className="compare-bar-floating">
+              <div className="compare-bar-container">
+                <div className="compare-bar-info">
+                  <span className="compare-count-badge">{comparedSkills.length}</span>
+                  <span className="compare-label-text">个已选技能</span>
+                </div>
+                
+                <div className="compared-thumbnails">
+                  {comparedSkills.map(skill => (
+                    <div key={skill.id} className="compared-thumbnail-item">
+                      <span className="thumb-name">{skill.name_cn}</span>
+                      <button 
+                        className="thumb-remove" 
+                        onClick={(e) => handleToggleCompare(skill, e)}
+                        title="移出对比"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="compare-bar-actions">
+                  <button 
+                    className="compare-clear-btn" 
+                    onClick={() => setComparedSkills([])}
+                  >
+                    清空已选
+                  </button>
+                  <button 
+                    className="compare-trigger-btn"
+                    disabled={comparedSkills.length < 2}
+                    onClick={() => setShowCompareModal(true)}
+                  >
+                    开始对比
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Comparison Modal */}
+          {showCompareModal && (
+            <div className="modal-overlay" onClick={() => setShowCompareModal(false)}>
+              <div className="modal-content comparison-modal-content" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '1000px', width: '90%' }}>
+                <button className="modal-close" onClick={() => setShowCompareModal(false)}>×</button>
+                <h3 className="modal-title" style={{ fontSize: '1.4rem', marginBottom: '1.5rem', fontFamily: 'var(--font-serif)', color: '#ffffff' }}>
+                  📊 AI Agent 技能对比矩阵
+                </h3>
+                
+                <div className="comparison-table-wrapper" style={{ overflowX: 'auto', width: '100%' }}>
+                  <table className="comparison-table" style={{ width: '100%', borderCollapse: 'collapse', minWidth: '600px' }}>
+                    <thead>
+                      <tr>
+                        <th style={{ width: '150px', textAlign: 'left', padding: '1rem', borderBottom: '1px solid var(--panel-border)', color: 'var(--text-muted)' }}>对比维度</th>
+                        {comparedSkills.map(skill => (
+                          <th key={skill.id} style={{ textAlign: 'left', padding: '1rem', borderBottom: '1px solid var(--panel-border)', minWidth: '180px' }}>
+                            <div style={{ fontWeight: '600', color: '#ffffff', fontSize: '1rem' }}>{skill.name_cn}</div>
+                            <div style={{ fontSize: '0.72rem', color: 'var(--accent-gold-soft)', fontFamily: 'monospace' }}>{skill.id}</div>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)', color: 'var(--text-muted)', fontSize: '0.82rem' }}>英文原名</td>
+                        {comparedSkills.map(skill => (
+                          <td key={skill.id} style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)', fontSize: '0.82rem', fontFamily: 'monospace' }}>{skill.name}</td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)', color: 'var(--text-muted)', fontSize: '0.82rem' }}>分类领域</td>
+                        {comparedSkills.map(skill => (
+                          <td key={skill.id} style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)', fontSize: '0.82rem' }}>{skill.category || getNewCategory(skill)}</td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)', color: 'var(--text-muted)', fontSize: '0.82rem' }}>提供商 / 作者</td>
+                        {comparedSkills.map(skill => (
+                          <td key={skill.id} style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)', fontSize: '0.82rem' }}>{skill.publisher}</td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)', color: 'var(--text-muted)', fontSize: '0.82rem' }}>版本号</td>
+                        {comparedSkills.map(skill => (
+                          <td key={skill.id} style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)', fontSize: '0.82rem', fontFamily: 'monospace' }}>{skill.version}</td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)', color: 'var(--text-muted)', fontSize: '0.82rem' }}>核心描述</td>
+                        {comparedSkills.map(skill => (
+                          <td key={skill.id} style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)', fontSize: '0.82rem', color: 'var(--text-main)', lineHeight: '1.4' }}>
+                            <div style={{ marginBottom: '0.5rem', fontWeight: '500' }}>{skill.description_cn}</div>
+                            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{skill.description}</div>
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)', color: 'var(--text-muted)', fontSize: '0.82rem' }}>标签</td>
+                        {comparedSkills.map(skill => (
+                          <td key={skill.id} style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem' }}>
+                              {skill.tags.map(tag => (
+                                <span key={tag} className="tag-pill" style={{ fontSize: '0.65rem' }}>#{tag}</span>
+                              ))}
+                            </div>
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)', color: 'var(--text-muted)', fontSize: '0.82rem' }}>装载命令</td>
+                        {comparedSkills.map(skill => (
+                          <td key={skill.id} style={{ padding: '0.8rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                            <div className="install-command" style={{ margin: 0, padding: '0.4rem 0.6rem', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '6px' }}>
+                              <span style={{ fontSize: '0.68rem', wordBreak: 'break-all', display: 'block', paddingRight: '0.4rem', fontFamily: 'monospace', color: 'var(--accent-gold-soft)' }}>
+                                {getInstallCommand(skill)}
+                              </span>
+                              <button 
+                                className="copy-btn" 
+                                onClick={(e) => handleCopy(skill, e)}
+                                style={{ flexShrink: 0 }}
+                              >
+                                {copiedId === skill.id ? '✔' : '复制'}
+                              </button>
+                            </div>
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td style={{ padding: '0.8rem 1rem', borderBottom: 'none', color: 'var(--text-muted)', fontSize: '0.82rem' }}>操作</td>
+                        {comparedSkills.map(skill => (
+                          <td key={skill.id} style={{ padding: '0.8rem 1rem', borderBottom: 'none' }}>
+                            <button 
+                              className="btn-reset" 
+                              onClick={(e) => handleToggleCompare(skill, e)}
+                              style={{ padding: '4px 10px', fontSize: '0.72rem', border: '1px solid rgba(255,255,255,0.1)', color: 'var(--text-muted)', background: 'none', cursor: 'pointer', borderRadius: '4px', marginTop: 0 }}
+                            >
+                              移出对比
+                            </button>
+                          </td>
+                        ))}
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
