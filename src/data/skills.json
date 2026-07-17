@@ -1117,7 +1117,7 @@
   {
     "id": "obsidian-automation",
     "name": "obsidian-automation",
-    "description": "Automates Obsidian vault operations: creating notes, updating Canvas files, batch-modifying content, querying the vault structure, and building knowledge graph connections. Use when the user asks to create, modify, reorganize or analyze content in their Obsidian vault at /Users/yiyirowan/Library/Mobile Documents/iCloud~md~obsidian/Documents/first/. Trigger when: - User wants to create notes, templates, or Canvas files in Obsidian - User wants to batch update or reorganize Obsidian content - User wants to query or analyze their vault structure - User wants to build knowledge connections or Canvas networks - User mentions \"Obsidian\", \"vault\", \"Canvas\", \"笔记库\", \"知识图谱",
+    "description": "Automates Obsidian vault operations: creating notes, updating Canvas files, batch-modifying content, querying the vault structure, and building knowledge graph connections. Use when the user asks to create, modify, reorganize or analyze content in their local Obsidian vault. Trigger when: - User wants to create notes, templates, or Canvas files in Obsidian - User wants to batch update or reorganize Obsidian content - User wants to query or analyze their vault structure - User wants to build knowledge connections or Canvas networks - User mentions \"Obsidian\", \"vault\", \"Canvas\", \"笔记库\", \"知识图谱",
     "category": "Frontend & Browser",
     "tags": [
       "GCP",
